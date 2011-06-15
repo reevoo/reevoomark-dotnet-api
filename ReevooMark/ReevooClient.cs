@@ -37,12 +37,17 @@ namespace ReevooMark
         /// </summary>
         private int _timeout;
 
+        /// <summary>
+        /// Declares the signature for the ObtainReevooMarkDataInternal function,
+        /// allowing it to be run asynchronously
+        /// </summary>
+        private delegate ReevooMarkData ObtainMarkDataDelegate(String trkref_, String sku_, String baseUri_);
+
         #region Constructors
 
         /// <summary>
         /// Construct a ReevooClient with the given timeout in milliseconds.
         /// </summary>
-        /// <param name="timeout_"></param>
         public ReevooClient(int timeout_)
         {
             _timeout = timeout_;
@@ -92,25 +97,12 @@ namespace ReevooMark
                 return _doWork.EndInvoke(_iar);
             }
         }
-        #endregion
 
-        /// <summary>
-        /// Declares the signature for the ObtainReevooMarkDataInternal function,
-        /// allowing it to be run asynchronously
-        /// </summary>
-        /// <param name="trkref_"></param>
-        /// <param name="sku_"></param>
-        /// <param name="baseUri_"></param>
-        /// <returns></returns>
-        delegate ReevooMarkData ObtainMarkDataDelegate(String trkref_, String sku_, String baseUri_);
+        #endregion
 
         /// <summary>
         /// Internal method which does the actual work of getting the Mark data.
         /// </summary>
-        /// <param name="trkref_"></param>
-        /// <param name="sku_"></param>
-        /// <param name="baseUri_"></param>
-        /// <returns></returns>
         private ReevooMarkData ObtainReevooMarkDataInternal(String trkref_, String sku_, String baseUri_)
         {
             var _builder = new UriBuilder(baseUri_);
@@ -158,9 +150,6 @@ namespace ReevooMark
         /// <summary>
         /// Constructs a querystring based on product and retailer codes.
         /// </summary>
-        /// <param name="trkref_"></param>
-        /// <param name="sku_"></param>
-        /// <returns></returns>
         internal static string GetQueryString(string trkref_, string sku_)
         {
             //construct a string in the format "sku=foo&retailer=bar"
@@ -172,8 +161,6 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'overall score' member from the returned data structure
         /// </summary>
-        /// <param name="webHeaderCollection_"></param>
-        /// <returns></returns>
         internal static string GetOverallScore(WebHeaderCollection webHeaderCollection_)
         {
             String _overallScore = webHeaderCollection_[HEADER_OVERALL_SCORE];
@@ -190,8 +177,6 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'best price' member from the returned data structure
         /// </summary>
-        /// <param name="webHeaderCollection_"></param>
-        /// <returns></returns>
         internal static String GetBestPrice(WebHeaderCollection webHeaderCollection_)
         {
             String _bestPrice = webHeaderCollection_[HEADER_BEST_PRICE];
@@ -208,8 +193,6 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'score count' member from the returned data structure
         /// </summary>
-        /// <param name="webHeaderCollection_"></param>
-        /// <returns></returns>
         internal static int GetScoreCount(WebHeaderCollection webHeaderCollection_)
         {
             int _scoreCount;
@@ -226,8 +209,6 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'review count' member from the returned data structure
         /// </summary>
-        /// <param name="webHeaderCollection"></param>
-        /// <returns></returns>
         internal static int GetReviewCount(WebHeaderCollection webHeaderCollection)
         {
             int _reviewCount;

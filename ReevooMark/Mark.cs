@@ -12,8 +12,17 @@ namespace ReevooMark
         /// </summary>
         private string _baseUri = @"http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews";
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnInit(EventArgs e)
         {
+            if (String.IsNullOrEmpty(SKU))
+            {
+                Trace.Write("SKU property is empty; returning nothing");
+            }
+
+            if (String.IsNullOrEmpty(TkRef))
+            {
+                Trace.Write("SKU property is empty; returning nothing");
+            }
         }
 
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
