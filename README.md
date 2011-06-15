@@ -41,6 +41,11 @@ asp.Net
 
 REQUIREMENTS
 ============
+Vanilla .Net v2.0, at least.
+
+DOWNLOAD
+========
+https://github.com/reevoo/reevoomark-dotnet-api/downloads
 
 
 VERSIONS
