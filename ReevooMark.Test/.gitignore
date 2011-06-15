@@ -1,0 +1,6 @@
+# ignore bin and obj directories
+bin/
+obj/
+
+#ignore user prefs
+*.csproj.user
