@@ -1,71 +1,64 @@
-﻿DESCRIPTION
-===========
+﻿#reevoomark-dotnet-api
 
-A .Net client for ReevooMark partners wanting to integrate Reevoo content into their websites.
+##Description
 
-FEATURES
-========
+The reevoomark-dotnet-api is a .NET tag library for ReevooMark and Reevoo Essentials customers who want to quickly and easily integrate Reevoo content in to their sites server-side.
 
-   * Simple access to per-product ReevooMark data
+##Other Languages
+Tag libraries are also available for [Java](https://github.com/reevoo/reevoomark-java-api) and [PHP](https://github.com/reevoo/reevoomark-php-api).
 
-SYNOPSIS
-========
+##Features
 
-Code
-----
+* Server-side inclusion of Reevoo content.
+* Included CSS for display of Reevoo content.
+* Server-side caching of content that respects the cache control rules set by Reevoo.
 
-    var client = new ReevooClient(3000);	// set timeout explicitly
-    ReevooMarkData reevooData = null;
+##Support
+For ReevooMark and Reevoo Essentials customers, support can be obtained by emailing <operations@reevoo.com>.
 
-    try
-    {
-        reevooData = client.ObtainReevooMarkData(trkref_, sku_, baseUri_);
-    }
-    catch(ReevooException re)
-    {						// *always* catch ReevooException here
-						// handle gracefully
-    }
-    var score = reevooData.OverallScore;
+There is also a [bug tracker](http://github.com/reevoo/reevoomark-dotnet-api/issues) available.
 
-asp.Net
--------
+##Implementation
 
-    #Register namespace prefix.
-    <%@ Register TagPrefix="reevoo" Namespace="ReevooMark" Assembly="ReevooMark" %>
+Include the relevant CSS. For product reviews use:
 
-    #Add stylesheet for retailer branding. Replace TSC for your own retailer code.
-    <link rel="stylesheet" type="text/css" href="http://mark.reevoo.com/stylesheets/reevoomark/embeded_reviews.css?trkref=TSC" />
+``` html
+<link rel="stylesheet" href="http://mark.reevoo.com/stylesheets/reevoomark/reevoo_reviews.css" type="text/css" />
+```
 
-    #Display in-line reviews for the retailer TSC and the SKU 67255143
-    <reevoo:Mark SKU="67255143" TkRef="TSC" runat="server" />
+Include your customer specific Reevoo JavaScript:
 
-REQUIREMENTS
-============
-Vanilla .Net v2.0, at least.
+``` html
+<script src="http://mark.reevoo.com/reevoomark/<TRKREF>.js" type="text/javascript"></script>
+```
 
-DOWNLOAD
-========
-https://github.com/reevoo/reevoomark-dotnet-api/downloads
+Register the namespace prefix:
 
+``` net
+<%@ Register TagPrefix="reevoo" Namespace="ReevooMark" Assembly="ReevooMark" %>
+```
 
-VERSIONS
-========
+Render embedded review content. Make sure to replace `<SKU>` and `<TRKREF>` with the appropriate values:
 
-Supported: .Net versions 2.0, 3.5, 4
-Not supported: .Net versions 1.0, 1.1
+``` net
+<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" runat="server" />
+```
 
-LICENSE
-=======
+##Requirements
+
+.NET v2.0+
+
+##License
 
 This software is released under the MIT license.  Only certified ReevooMark partners
-are licensed to display Reevoo content on their sites.  Contact [mailto:sales@reevoo.com] for
+are licensed to display Reevoo content on their sites.  Contact <sales@reevoo.com> for
 more information.
 
 (The MIT License)
 
 Copyright (c) 2008 - 2010:
 
-* {Reevoo}[http://www.reevoo.com]
+* [Reevoo](http://www.reevoo.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
