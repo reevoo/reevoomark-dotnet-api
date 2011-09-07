@@ -18,6 +18,14 @@ For ReevooMark and Reevoo Essentials customers, support can be obtained by email
 
 There is also a [bug tracker](http://github.com/reevoo/reevoomark-dotnet-api/issues) available.
 
+##Installation
+
+Install [NuGet](http://nuget.org/) if you don't already have it, then run the following command in the package manager console:
+
+```
+Install-Package ReevooMark
+```
+
 ##Implementation
 
 Include the relevant CSS. For product reviews use:
