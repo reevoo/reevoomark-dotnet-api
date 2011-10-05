@@ -31,7 +31,7 @@ Install-Package ReevooMark
 Include the relevant CSS. For product reviews use:
 
 ``` html
-<link rel="stylesheet" href="http://mark.reevoo.com/stylesheets/reevoomark/reevoo_reviews.css" type="text/css" />
+<link rel="stylesheet" href="http://mark.reevoo.com/stylesheets/reevoomark/embedded_reviews.css" type="text/css" />
 ```
 
 Include your customer specific Reevoo JavaScript:
