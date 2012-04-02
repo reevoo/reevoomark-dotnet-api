@@ -60,6 +60,10 @@ If you display the reviews in a tabbed display, or otherwise require visitors to
   onclick="ReevooMark.track_click_through(‘<SKU>’)”
 ```
 
+## Headers
+
+By default, Reevoo will render a helpful page to the user when there are no reviews available. You can handle this yourself by checking the ```X-Reevoo-ReviewCount``` header.
+
 ##Requirements
 
 .NET v2.0+
