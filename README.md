@@ -52,10 +52,10 @@ Render embedded review content. Make sure to replace `<SKU>` and `<TRKREF>` with
 <reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" runat="server" />
 ```
 
-It is also possible to specify locale you'd like in the baseURI (i.e. fr-FR):
+It is also possible to set the locale by changing `<LOCALE>` to an appropriate value such as `fr-FR`:
 
 ``` net
-<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/fr-FR/10/embeddable_reviews.html" runat="server" />
+<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/<LOCALE>/embeddable_reviews.html" runat="server" />
 ```
 
 ## Tracking
