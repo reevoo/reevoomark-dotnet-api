@@ -52,6 +52,14 @@ Render embedded review content. Make sure to replace `<SKU>` and `<TRKREF>` with
 <reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" runat="server" />
 ```
 
+It is also possible to set the locale by changing `<LOCALE>` to an appropriate value such as `fr-FR`:
+
+``` net
+<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/<LOCALE>/embeddable_reviews.html" runat="server" />
+```
+
+Please note that a `<SKU>` cannot contain special characters such as `-`, `&` or `:`.
+
 ## Tracking
 
 If you display the reviews in a tabbed display, or otherwise require visitors to your site to click an element before seeing the embedded reviews, add the following onclick attribute to track the clickthroughs:
