@@ -76,14 +76,14 @@ namespace ReevooMark.Test
         public void TestGetOverallScore()
         {
             Assert.AreEqual("9.4", ReevooClient.GetOverallScore(_goodHeaders), "GetOverallScore parsing logic failed");
-            Assert.IsNullOrEmpty(ReevooClient.GetOverallScore(_badHeaders), "GetOverallScore should return null for bad data");
+            Assert.IsEmpty(ReevooClient.GetOverallScore(_badHeaders), "GetOverallScore should return empty for bad data");
         }
 
         [Test]
         public void TestGetBestPrice()
         {
             Assert.AreEqual("1.38", ReevooClient.GetBestPrice(_goodHeaders), "GetBestPrice parsing logic failed");
-            Assert.IsNullOrEmpty(ReevooClient.GetBestPrice(_badHeaders), "GetBestPrice should return null for bad data");
+            Assert.IsEmpty(ReevooClient.GetBestPrice(_badHeaders), "GetBestPrice should return empty for bad data");
         }
 
         [Test]
@@ -105,6 +105,13 @@ namespace ReevooMark.Test
         public void TestGetReevooMarkData()
         {
             Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("TSC", "67255143", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
-        }
+		}
+
+		[Test]
+		[Category("Requires network connection")]
+		public void TestGetSeriesReevooMarkData()
+		{
+			Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("GMXT-FOC-N", "series:ford-ka", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
+		}
     }
 }

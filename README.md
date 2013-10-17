@@ -58,8 +58,6 @@ It is also possible to set the locale by changing `<LOCALE>` to an appropriate v
 <reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/<LOCALE>/embeddable_reviews.html" runat="server" />
 ```
 
-Please note that a `<SKU>` cannot contain special characters such as `-`, `&` or `:`.
-
 ### Rendering Issues
 
 Any changes to the visiblity settings of the 'traffic reviews solution' will require you to call the code below to ensure the correct formatting is applied.
