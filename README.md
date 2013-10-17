@@ -60,6 +60,16 @@ It is also possible to set the locale by changing `<LOCALE>` to an appropriate v
 
 Please note that a `<SKU>` cannot contain special characters such as `-`, `&` or `:`.
 
+### Rendering Issues
+
+Any changes to the visiblity settings of the 'traffic reviews solution' will require you to call the code below to ensure the correct formatting is applied.
+
+NOTE: This assumes you are using the latest version of the Reevoo JS library.
+
+``` javascript
+ReevooMark.auto_scale()
+```
+
 ## Tracking
 
 If you display the reviews in a tabbed display, or otherwise require visitors to your site to click an element before seeing the embedded reviews, add the following onclick attribute to track the clickthroughs:
