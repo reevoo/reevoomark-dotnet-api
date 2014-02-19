@@ -4,5 +4,5 @@ install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console
  
 script:
-  - xbuild ./ReevooMark.Test.csproj
+  - xbuild ./ReevooMark.Test/ReevooMark.Test.csproj
   - nunit-console ./ReevooMark.Test/bin/Debug/ReevooMark.Test.dll
