@@ -36,14 +36,15 @@ Include the relevant CSS. For product reviews use:
 
 Include your customer specific Reevoo JavaScript:
 
-If you don't need https you can include the JavaScript like this:
+We advise using this implementation below as it is protocol-less and will use HTTP or HTTPS
+depending on what your page is using.
 
 ``` html
 <script id="reevoomark-loader">
   (function() {
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'http://cdn.mark.reevoo.com/assets/reevoo_mark.js';
+    script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js';
     var s = document.getElementById('reevoomark-loader');
     s.parentNode.insertBefore(script, s);
   })();
@@ -57,18 +58,24 @@ If you don't need https you can include the JavaScript like this:
 </script>
 ```
 
-If you do need to use https you can include the JavaScript like this:
+If you do need to use https, such as in an iframe, you can include the JavaScript like this:
 
 ``` html
 <script id="reevoomark-loader">
   (function() {
-    var trkref = 'TRKREF';
-    var myscript = document.createElement('script');
-    myscript.type = 'text/javascript';
-    myscript.src=('//mark.reevoo.com/reevoomark/'+trkref+'.js?async=true');
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://cdn.mark.reevoo.com/assets/reevoo_mark.js';
     var s = document.getElementById('reevoomark-loader');
-    s.parentNode.insertBefore(myscript, s);
+    s.parentNode.insertBefore(script, s);
   })();
+  
+  afterReevooMarkLoaded = [];
+  afterReevooMarkLoaded.push(function(){
+    ReevooApi.load('TRKREF', function(retailer){
+      retailer.init_badges();
+    });
+  });
 </script>
 ```
 
