@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark/ReevooException.cs">
+    <Files>
+      <File FileName="ReevooMark/ReevooException.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooMarkData.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/ReevooClientTests.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooMark.csproj" Line="1" Column="1" />
+      <File FileName="ReevooMark.ClientSite/ReevooMark.ClientSite/ReevooMark.ClientSite.csproj" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
