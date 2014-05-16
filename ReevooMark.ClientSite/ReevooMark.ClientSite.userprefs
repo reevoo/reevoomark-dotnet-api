@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark.ClientSite/Default.aspx">
+    <Files>
+      <File FileName="ReevooMark.ClientSite/web.config" Line="1" Column="1" />
+      <File FileName="ReevooMark.ClientSite/Default.aspx" Line="17" Column="64" />
+      <File FileName="ReevooMark.ClientSite/Global.asax" Line="1" Column="1" />
+      <File FileName="ReevooMark.ClientSite/web.Release.config" Line="1" Column="1" />
+      <File FileName="ReevooMark.ClientSite/web.Debug.config" Line="1" Column="1" />
+      <File FileName="ReevooMark.ClientSite/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
