@@ -13,6 +13,11 @@ namespace ReevooMark
 		protected string _baseUri;
 
 		protected override void Render(System.Web.UI.HtmlTextWriter writer)
+		{	
+			writer.Write(this.GetContent());
+		}
+
+		public String GetContent()
 		{
 			String _content;
 			try
@@ -25,7 +30,7 @@ namespace ReevooMark
 				Trace.Write(re_.Message);
 				_content = String.Empty;
 			}
-			writer.Write(_content);
+			return _content;
 		}
 
 		public String SKU { get; set; }
