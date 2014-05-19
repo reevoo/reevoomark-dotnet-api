@@ -2,7 +2,8 @@
 using System;
 using ReevooMark;
 using System.Net;
-using System.Web;
+using System.Web.UI;
+using System.IO;
 
 
 namespace ReevooMark.Test
@@ -16,9 +17,11 @@ namespace ReevooMark.Test
 		[Category("Requires network connection")]
 		public void TestCustomerExperienceReviewsData()
 		{
-	
-			//	Console.WriteLine (new ReevooCustomerExperienceReviews ().GetContent (_tkref, _sku));
-			//		Assert.AreEqual("http://mark.reevoo.com/reevoomark/embeddable_customer_experience_reviews?retailer=foo&sku=bar",  new ReevooCustomerExperienceReviews().GetContent(_tkref, _sku));
+			CustomerExperienceReviews cx_reviews = new CustomerExperienceReviews();
+			cx_reviews.SKU = "";
+			cx_reviews.TkRef = "CYS";
+//			Console.WriteLine (cx_reviews.GetContent());
+			//Assert.AreEqual("http://mark.reevoo.com/reevoomark/embeddable_customer_experience_reviews?retailer=CYS&sku=",  cx_reviews.GetContent());
 		}
 	}
 }

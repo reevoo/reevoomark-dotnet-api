@@ -49,6 +49,8 @@
     <Compile Include="ReevooClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReevooCustomerExperienceReviewsTest.cs" />
+    <Compile Include="CssAssetsTest.cs" />
+    <Compile Include="JavascriptAssetsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReevooMark\ReevooMark.csproj">

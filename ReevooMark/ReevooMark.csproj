@@ -49,6 +49,19 @@
     </Compile>
     <Compile Include="CssAssets.cs" />
     <Compile Include="JavascriptAssets.cs" />
+    <Compile Include="Badges\AbstractReevooBadgeTag.cs" />
+    <Compile Include="Badges\DeliveryRatingBadge.cs">
+      <DependentUpon>AbstractReevooBadgeTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Badges\OverallServiceRatingBadge.cs">
+      <DependentUpon>AbstractReevooBadgeTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Badges\ProductBadge.cs" />
+    <Compile Include="Badges\CustomerServiceRatingBadge.cs" />
+    <Compile Include="Badges\ConversationsBadge.cs" />
+    <Compile Include="Badges\ProductSeriesBadge.cs" />
+    <Compile Include="Badges\ConversationSeriesBadge.cs" />
+    <Compile Include="Conversations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -58,4 +71,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Badges\" />
+  </ItemGroup>
 </Project>

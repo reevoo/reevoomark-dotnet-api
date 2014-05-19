@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Web.UI;
+using System.ComponentModel;
 
 namespace ReevooMark
 {
 	/// <summary>
-	/// Abstact class <see cref="System.Web.UI.UserControl"/> for showing in-line product and customer experience reviews for Reevoo products and retailers
+	/// Base abstact class <see cref="System.Web.UI.UserControl"/> for showing in-line product and customer experience reviews for Reevoo products and retailers.
 	/// </summary>
+	[ParseChildren(true, "Text")]
 	public abstract class AbstractReevooTag : System.Web.UI.UserControl
 	{
 		/// <summary>
@@ -35,6 +38,8 @@ namespace ReevooMark
 
 		public String SKU { get; set; }
 		public String TkRef { get; set; }
+		[DefaultValue("")]
+		public String Text { get; set; }
 
 		//provide a sensible default for BaseUri, seeing as we know it.
 		public String BaseUri
