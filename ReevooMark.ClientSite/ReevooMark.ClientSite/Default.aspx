@@ -37,7 +37,7 @@
                     <h2>Product Reviews</h2>
                     <reevoo:ProductReviews SKU="67255143" TRKREF="TSC" runat="server"/>
                     <h2>Customer Experience Reviews</h2>
-                    <reevoo:CustomerExperienceReviews TRKREF="CYS" NumberOfReviews="10" runat="server"/> 
+                    <reevoo:CustomerExperienceReviews TRKREF="CYS" NumberOfReviews="3" runat="server"/> 
                     <h2>Conversations</h2>
                     <reevoo:Conversations TRKREF="REV" SKU="167823" runat="server"/>
                     <h2>Product Badge Undecorated</h2>
@@ -60,7 +60,7 @@
                     <reevoo:ConversationSeriesBadge TRKREF="HYU" SKU="i20" runat="server" />
                     <reevoo:Mark TRKREF="REV" SKU="167823" BaseUri ="http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews" runat="server" />
                     <h2>Product Reviews with locale</h2>
-                	<reevoo:ProductReviews SKU="167823" TRKREF="REV" Locale="en-GB" NumberOfReviews="5" runat="server"/>
+                	<reevoo:ProductReviews SKU="167823" TRKREF="REV" Locale="fr-FR" NumberOfReviews="5" runat="server"/>
                     <reevoo:JavascriptAssets TRKREF="CYS,REV,EBU,PIU,HYU" runat="server"/>
                 </div>
             </div>

@@ -8,7 +8,7 @@ namespace ReevooMark
 	public class CustomerExperienceReviews :AbstractReevooMarkClientTag
 	{
 		public CustomerExperienceReviews(){
-			this.BaseUri = String.Format(@"http://mark.reevoo.com/reevoomark{0}embeddable_customer_experience_reviews", NumberOfReviews);
+			this.BaseUri = @"http://mark.reevoo.com/reevoomark{0}{1}embeddable_customer_experience_reviews";
 		}
 
 	}

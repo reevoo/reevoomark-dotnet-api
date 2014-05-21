@@ -10,7 +10,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReevooMark.Test</RootNamespace>
     <AssemblyName>ReevooMark.Test</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -43,11 +42,13 @@
     <Reference Include="nunit.mocks, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="nunit.framework.extensions, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" />
     <Reference Include="System.Web" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ReevooClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReevooCustomerExperienceReviewsTest.cs" />
     <Compile Include="CssAssetsTest.cs" />
     <Compile Include="JavascriptAssetsTest.cs" />
     <Compile Include="BadgesTests\ConversationsBadgeTest.cs" />
@@ -55,6 +56,9 @@
     <Compile Include="BadgesTests\CustomerServiceRatingBadgeTest.cs" />
     <Compile Include="BadgesTests\ProductBadgeTest.cs" />
     <Compile Include="BadgesTests\ProductSeriesBadgeTest.cs" />
+    <Compile Include="ProductReviewsTest.cs" />
+    <Compile Include="CustomerExperienceReviewsTest.cs" />
+    <Compile Include="ConversationsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReevooMark\ReevooMark.csproj">
@@ -83,4 +87,7 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>
