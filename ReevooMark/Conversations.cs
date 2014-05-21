@@ -2,20 +2,16 @@
 
 namespace ReevooMark
 {
-	public class Conversations : AbstractReevooTag
+	public class Conversations : AbstractReevooMarkClientTag
 	{   
 		public Conversations(){
-			this.BaseUri = @"http://mark.reevoo.com/reevoomark/embeddable_customer_experience_reviews";
+			this.BaseUri = String.Format(@"http://mark.reevoo.com/reevoomark{0}{1}embeddable_conversations", Locale, NumberOfReviews);
 		}
 
 		protected override void OnInit(EventArgs e)
 		{
+			base.OnInit(e);
 			if (String.IsNullOrEmpty(SKU))
-			{
-				Trace.Write("SKU property is empty; returning nothing");
-			}
-
-			if (String.IsNullOrEmpty(TkRef))
 			{
 				Trace.Write("SKU property is empty; returning nothing");
 			}

@@ -67,9 +67,9 @@ namespace ReevooMark.Test
         public void TestGetQueryString()
         {
             string _sku = @"foo";
-            string _tkref = @"bar";
+			string _trkref = @"bar";
 
-            StringAssert.IsMatch("sku=foo&retailer=bar", ReevooClient.GetQueryString(_tkref, _sku));
+			StringAssert.IsMatch("sku=foo&retailer=bar", ReevooClient.GetQueryString(_trkref, _sku));
         }
 
         [Test]

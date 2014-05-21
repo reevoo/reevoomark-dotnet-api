@@ -1,19 +1,33 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark/JavascriptAssets.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark.Test/web.config">
     <Files>
+      <File FileName="ReevooMark/JavascriptAssets.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/JavascriptAssetsTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/ReevooClientTests.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/CssAssetsTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ConversationSeriesBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/AbstractReevooBadgeTag.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/AbstractReevooTag.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Conversations.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ConversationsBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ProductReviews.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/CustomerServiceRatingBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/DeliveryRatingBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/OverallServiceRatingBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ProductBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ProductSeriesBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/CssAssets.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/CustomerExperienceReviews.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooClient.cs" Line="1" Column="1" />
       <File FileName="ReevooMark/ReevooException.cs" Line="1" Column="1" />
       <File FileName="ReevooMark/ReevooMarkData.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark/Properties/AssemblyInfo.cs" Line="37" Column="1" />
-      <File FileName="ReevooMark/CustomerExperienceReviews.cs" Line="14" Column="1" />
-      <File FileName="ReevooMark/ProductReviews.cs" Line="8" Column="29" />
-      <File FileName="ReevooMark/ReevooClient.cs" Line="97" Column="1" />
-      <File FileName="ReevooMark.Test/ReevooClientTests.cs" Line="72" Column="66" />
-      <File FileName="ReevooMark/AbstractReevooTag.cs" Line="15" Column="33" />
-      <File FileName="ReevooMark.Test/ReevooCustomerExperienceReviewsTest.cs" Line="19" Column="2" />
-      <File FileName="ReevooMark/EmptyClass.cs" Line="5" Column="28" />
-      <File FileName="ReevooMark/CssAssets.cs" Line="10" Column="1" />
-      <File FileName="ReevooMark/JavascriptAssets.cs" Line="29" Column="3" />
+      <File FileName="ReevooMark.Test/ReevooCustomerExperienceReviewsTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Mark.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/BadgesTests/ConversationsBadgeTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/BadgesTests/ConversationSeriesBadgeTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/BadgesTests/CustomerServiceRatingBadgeTest.cs" Line="37" Column="4" />
+      <File FileName="ReevooMark.Test/web.config" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -21,9 +35,8 @@
           <Node name="ReevooMark.Test" expanded="True">
             <Node name="ReevooMark" expanded="True">
               <Node name="Test" expanded="True">
-                <Node name="ReevooClientTests" expanded="True" />
-                <Node name="ReevooCustomerExperienceReviewsTest" expanded="True">
-                  <Node name="TestCustomerExperienceReviewsData" selected="True" />
+                <Node name="CustomerServiceRatingBadgeTest" expanded="True">
+                  <Node name="TestThatIfTrkrefNotSpecifyItWillUseTheOneDefinedInTheWebConfigFile" selected="True" />
                 </Node>
               </Node>
             </Node>

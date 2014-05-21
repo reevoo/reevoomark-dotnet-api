@@ -1,19 +1,31 @@
 ﻿using System;
 using System.Web.UI;
 using System.ComponentModel;
+using System.Web.Configuration;
 
 namespace ReevooMark
 {
 	/// <summary>
-	/// Base abstact class <see cref="System.Web.UI.UserControl"/> for showing in-line product and customer experience reviews for Reevoo products and retailers.
+	/// Base abstact class <see cref="System.Web.UI.UserControl"/> for showing Reevoomark products.
 	/// </summary>
 	[ParseChildren(true, "Text")]
 	public abstract class AbstractReevooTag : System.Web.UI.UserControl
 	{
-		/// <summary>
-		/// A sensible default for the base URI; so this property is optional
-		/// </summary>
 		protected string _baseUri;
+
+		protected override void OnInit(EventArgs e)
+		{
+			if (String.IsNullOrEmpty (TRKREF) && String.IsNullOrEmpty (WebConfigurationManager.AppSettings ["TRKREF"])) 
+			{
+				Trace.Write("TRKREF property is empty; returning nothing");
+			}
+
+			else if (String.IsNullOrEmpty(TRKREF))
+			{
+				this.TRKREF = WebConfigurationManager.AppSettings["TRKREF"]; 
+			}
+
+		}
 
 		protected override void Render(System.Web.UI.HtmlTextWriter writer)
 		{	
@@ -25,7 +37,7 @@ namespace ReevooMark
 			String _content;
 			try
 			{
-				_content = new ReevooClient().ObtainReevooMarkData(TkRef, SKU, BaseUri).Content;
+				_content = new ReevooClient().ObtainReevooMarkData(TRKREF, SKU, BaseUri).Content;
 			}
 			catch (ReevooException re_)
 			{
@@ -37,7 +49,7 @@ namespace ReevooMark
 		}
 
 		public String SKU { get; set; }
-		public String TkRef { get; set; }
+		public String TRKREF { get; set; }
 		[DefaultValue("")]
 		public String Text { get; set; }
 

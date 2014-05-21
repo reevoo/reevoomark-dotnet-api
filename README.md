@@ -26,75 +26,258 @@ Install [NuGet](http://nuget.org/) if you don't already have it, then run the fo
 Install-Package ReevooMark
 ```
 
+##Configuration
+In your ```web.config``` file add the value of the TRKREF provided to you by Reevoo in the following way:
+
+```net
+<appSettings>
+   <add key="TRKREF" value="PIU"/>
+</appSettings>
+```
+This will be used throughout your web server wherever you use a Reevoo asset without specifying an alternative TRKREF.
+
+For example,
+
+```net
+<reevoo:JavascriptAssets runat="server"/>
+```
+will initialize our Reevoo javascript assets with the default TRKREF provided in the web.config file, in this case TRKREF="PIU". You can override this default value by providing the TRKREF in the following way:
+
+```net
+<reevoo:JavascriptAssets  TRKREF="REV" runat="server"/>
+```
+
 ##Implementation
-
-Include the relevant CSS. For product reviews use:
-
-``` html
-<link rel="stylesheet" href="http://mark.reevoo.com/stylesheets/reevoomark/embedded_reviews.css" type="text/css" />
-```
-
-Include your customer specific Reevoo JavaScript:
-
-We advise using this implementation below as it is protocol-less and will use HTTP or HTTPS
-depending on what your page is using.
-
-``` html
-<script id="reevoomark-loader">
-  (function() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js';
-    var s = document.getElementById('reevoomark-loader');
-    s.parentNode.insertBefore(script, s);
-  })();
-  
-  afterReevooMarkLoaded = [];
-  afterReevooMarkLoaded.push(function(){
-    ReevooApi.load('TRKREF', function(retailer){
-      retailer.init_badges();
-    });
-  });
-</script>
-```
-
-If you do need to use https, such as in an iframe, you can include the JavaScript like this:
-
-``` html
-<script id="reevoomark-loader">
-  (function() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://cdn.mark.reevoo.com/assets/reevoo_mark.js';
-    var s = document.getElementById('reevoomark-loader');
-    s.parentNode.insertBefore(script, s);
-  })();
-  
-  afterReevooMarkLoaded = [];
-  afterReevooMarkLoaded.push(function(){
-    ReevooApi.load('TRKREF', function(retailer){
-      retailer.init_badges();
-    });
-  });
-</script>
-```
 
 Register the namespace prefix:
 
-``` net
+```net
 <%@ Register TagPrefix="reevoo" Namespace="ReevooMark" Assembly="ReevooMark" %>
 ```
 
-Render embedded review content. Make sure to replace `<SKU>` and `<TRKREF>` with the appropriate values:
+You should include the Reevoo specific CSS in your header:
 
-``` net
-<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" runat="server" />
+```net
+<reevoo:CssAssets runat="server"/>
 ```
 
-It is also possible to set the locale by changing `<LOCALE>` to an appropriate value such as `fr-FR`:
+You should include the Reevoo specific JavaScript at the bottom of your body:
 
-``` net
-<reevoo:Mark SKU="<SKU>" TkRef="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/<LOCALE>/embeddable_reviews.html" runat="server" />
+```net
+<reevoo:JavascriptAssets runat="server"/>
+```
+
+As before you may set an explicit TRKREF if you wish.
+
+
+```net
+<reevvoo:JavascriptAssets  TRKREF="REV" runat="server"/>
+```
+It also has support for multiple TRKREF'S.
+
+
+```net
+<reevvoo:JavascriptAssets  TRKREF="REV, CYS, HYU" runat="server"/>
+```
+
+
+
+### Standard Badges
+
+#### Product Badge
+
+To render "product badges" you can use any of the below.
+The ```SKU``` is compulsory but ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:ProductBadge SKU="<SKU>" runat="server"/>
+  <reevoo:ProductBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:productBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
+  <reevoo:productBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="stars_only" runat="server"/>
+```
+
+#### Conversations Badge
+
+To render "conversations badges" you can use any of the below.
+The ```SKU``` is compulsory but ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:ConversationsBadge SKU="<SKU>" runat="server"/>
+  <reevoo:ConversationsBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:ConversationsBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
+  <reevoo:ConversationsBadge SKU="<SKU>" TRKREF="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
+```
+
+### Series Badges
+
+#### Product Badges
+
+To render "product series badges" you can use any of the below.
+The ```SKU``` is compulsory and should be set to the series id. The ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:ProductSeriesBadge SKU="<SKU>" runat="server" />
+  <reevoo:ProductSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:ProductSeriesBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
+  <reevoo:ProductSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+```
+
+#### Conversations Badges
+
+To render "conversation series badges" you can use any of the below.
+The ```SKU``` is compulsory and should be set to the series id. The ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:ConversationSeriesBadge SKU="<SKU>" runat="server"/>
+  <reevoo:ConversationSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:ConversationSeriesBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
+  <reevoo:ConversationSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+```
+
+### Overall Service Rating Badges
+
+To render "Overall Service Rating badges" you can use any of the below.
+The ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:OverallServiceRatingBadge runat="server"/>
+  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:OverallServiceRatingBadge VariantName="undecorated" runat="server"/>
+  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+```
+
+### Customer Service Rating Badges
+
+To render "Customer Service Rating badges" you can use any of the below.
+The ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:CustomerServiceRatingBadge runat="server"/>
+  <reevoo:CustomerServiceRatingBadge TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:CustomerServiceRatingBadge VariantName="undecorated" runat="server"/>
+  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+```
+
+### Delivery Rating Badges
+
+To render "Delivery Rating badges" you can use any of the below.
+The ```TRKREF``` and ```VariantName``` are optional.
+
+Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
+
+```net
+  <reevoo:DeliveryRatingBadge runat="server"/>
+  <reevoo:DeliveryRatingBadge TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:DeliveryRatingBadge VariantName="undecorated" runat="server"/>
+  <reevoo:DeliveryRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+```
+
+### Embedded Review Content
+
+To render "embedded review content" you can use any of the below.
+The ```SKU``` attribute is compulsory but ```TRKREF```, ```Locale``` and ```NumberOfReviews``` are optional.
+
+If you wish to use ```Locale``` or ```NumberOfReviews``` you must include the other.
+
+Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` with the appropriate values.
+
+```net
+  <reevoo:ProductReviews SKU="<SKU>" runat="server" />
+  <reevoo:ProductReviews SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:ProductReviews SKU="<SKU>" TRKREF="<TRKREF>" Locale="<LOCALE>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+```
+
+#### Overall rating
+
+The overall rating section at the top of inline reviews contains an overall score, a summary and the score breakdowns.
+
+#### Fallback
+
+If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
+
+```net
+  <reevoo:productReviews SKU="<SKU>" runat="server">
+    <p>Sorry we don't have any reviews available right now</p>
+  </reevoo:productReviews>
+```
+
+### Embedded Conversation Content
+
+To render "embedded conversations content" you can use any of the below.
+The ```SKU``` attribute is compulsory but ```TRKREF```, ```Locale``` and ```NumberOfReviews``` are optional.
+
+If you wish to use ```Locale``` or ```NumberOfReviews``` you must include the other.
+
+Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` with the appropriate values.
+
+```net
+  <reevoo:Conversations SKU="<SKU>" runat="server" />
+  <reevoo:Conversations SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:Conversations SKU="<SKU>" TRKREF="<TRKREF>" Locale="<LOCALE>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+```
+
+#### Fallback
+
+If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
+
+```net
+  <reevoo:Conversations SKU="<SKU>" runat="server">
+    <p>Sorry we don't have any conversations available right now</p>
+  </reevoo:Conversations>
+```
+
+### Embedded Customer Experience Review Content
+
+To render "embedded customer experience review content" you can use any of the below.
+The ```TRKREF``` and ```NumberOfReviews``` are optional.
+
+Make sure to replace `<TRKREF>` and `<NUMBEROFREVIEWS>` with the appropriate values.
+
+```net
+  <reevoo:CustomerExperienceReviews runat="server"/>
+  <reevoo:CustomerExperienceReviews TRKREF="<TRKREF>" runat="server"/>
+  <reevoo:CustomerExperienceReviews NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:CustomerExperienceReviews TRKREF="<TRKREF>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+```
+
+#### Fallback
+
+If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
+
+```net
+  <reevoo:CustomerExperienceReviews SKU="<SKU>" runat="server">
+    <p>Sorry we don't have any customer experience reviews available right now</p>
+  </reevoo:CustomerExperienceReviews>
+```
+
+
+### Generic Mark Embeddable Content Tag
+
+There is a generic tag that allows to specify the base url to call on the Reevoo server for generic embeddable content that is
+not provided by any of the previous tags. The tag name is "mark" and you can use it in the following way:
+
+Make sure to replace `<SKU>` and `<TRKREF>` with the appropriate values:
+
+```net
+  <reevoo:Mark SKU="<SKU>" TRKREF="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/embeddable_reviews.html" runat="server"/>
+```
+
+It is also possible to specify locale and the number of reviews you'd like in the baseURI:
+
+```net
+  <reevoo:Mark SKU="<SKU>" TRKREF="<TRKREF>" baseURI="http://mark.reevoo.com/reevoomark/fr-FR/10/embeddable_reviews.html" runat="server" />
 ```
 
 ### Rendering Issues
@@ -114,11 +297,6 @@ If you display the reviews in a tabbed display, or otherwise require visitors to
 ``` html
   onclick="ReevooMark.track_click_through(‘<SKU>’)”
 ```
-
-## Overall rating
-
-The overall rating section at the top of inline reviews contains an overall score, a summary and the score breakdowns. 
-
 ##Requirements
 
 .NET v2.0+
@@ -153,3 +331,5 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+

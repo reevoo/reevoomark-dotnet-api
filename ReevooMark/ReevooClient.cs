@@ -70,7 +70,7 @@ namespace ReevooMark
         /// <param name="baseUri_">The base URI for the request - provided by Reevoo.</param>
         /// <returns>An instance of <see cref="ReevooMarkData"/></returns>
         /// <exception cref="ReevooException">If anything bad happened whilst getting mark data</exception>
-        public ReevooMarkData ObtainReevooMarkData(String tkref_, String sku_, String baseUri_)
+        public ReevooMarkData ObtainReevooMarkData(String trkref_, String sku_, String baseUri_)
         {
             //this function delegates to 'ObtainReevooMarkDataInternal', which handles
             //the logic of actually getting and parsing the data from the ReevooMark service.
@@ -86,7 +86,7 @@ namespace ReevooMark
 
             var _doWork = new ObtainMarkDataDelegate(ObtainReevooMarkDataInternal);
 
-            var _iar = _doWork.BeginInvoke(tkref_, sku_, baseUri_, null, null);
+            var _iar = _doWork.BeginInvoke(trkref_, sku_, baseUri_, null, null);
 
             if (!_iar.AsyncWaitHandle.WaitOne(_timeout, false))
             {

@@ -1,27 +1,22 @@
 ﻿using System;
+using System.Web.Configuration;
 
 namespace ReevooMark
 {
-    /// <summary>
-    /// A <see cref="System.Web.UI.UserControl"/> for showing in-line reviews for Reevoo products
-    /// </summary>
-	public class ProductReviews : AbstractReevooTag
+	public class ProductReviews :AbstractReevooMarkClientTag
     {   
 		public ProductReviews(){
-			this.BaseUri = @"http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews";
+			this.BaseUri = String.Format(@"http://mark.reevoo.com/reevoomark/{0}{1}embeddable_reviews",Locale,NumberOfReviews);
 		}
 
 		protected override void OnInit(EventArgs e)
 		{
+			base.OnInit(e);
 			if (String.IsNullOrEmpty(SKU))
 			{
 				Trace.Write("SKU property is empty; returning nothing");
 			}
 
-			if (String.IsNullOrEmpty(TkRef))
-			{
-				Trace.Write("SKU property is empty; returning nothing");
-			}
 		}
     }
 }

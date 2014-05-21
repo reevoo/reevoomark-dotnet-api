@@ -25,7 +25,6 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -51,6 +50,11 @@
     <Compile Include="ReevooCustomerExperienceReviewsTest.cs" />
     <Compile Include="CssAssetsTest.cs" />
     <Compile Include="JavascriptAssetsTest.cs" />
+    <Compile Include="BadgesTests\ConversationsBadgeTest.cs" />
+    <Compile Include="BadgesTests\ConversationSeriesBadgeTest.cs" />
+    <Compile Include="BadgesTests\CustomerServiceRatingBadgeTest.cs" />
+    <Compile Include="BadgesTests\ProductBadgeTest.cs" />
+    <Compile Include="BadgesTests\ProductSeriesBadgeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReevooMark\ReevooMark.csproj">
@@ -66,4 +70,17 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="BadgesTests\" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy FileWidth="120" TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="application/config+xml" />
+          <XmlFormattingPolicy inheritsSet="Mono" inheritsScope="application/xml" scope="application/config+xml" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

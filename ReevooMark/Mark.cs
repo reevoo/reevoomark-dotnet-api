@@ -2,26 +2,22 @@
 
 namespace ReevooMark
 {
-    /// <summary>
-    /// A <see cref="System.Web.UI.UserControl"/> for showing in-line reviews for Reevoo products
-    /// </summary>
 	public class Mark : AbstractReevooTag
-    {   
-		public Mark(){
-			this.BaseUri = @"http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews";
-		}
+	{
 
 		protected override void OnInit(EventArgs e)
 		{
+			base.OnInit (e);
 			if (String.IsNullOrEmpty(SKU))
 			{
 				Trace.Write("SKU property is empty; returning nothing");
 			}
 
-			if (String.IsNullOrEmpty(TkRef))
+			if (String.IsNullOrEmpty(BaseUri))
 			{
-				Trace.Write("SKU property is empty; returning nothing");
+				Trace.Write("BaseUri property is empty; returning nothing");
 			}
 		}
-    }
+			
+	}
 }

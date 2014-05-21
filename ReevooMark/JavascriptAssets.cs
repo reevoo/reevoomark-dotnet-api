@@ -22,15 +22,7 @@ namespace ReevooMark
 															 "s.parentNode.insertBefore(script, s);" +
 			"}})();" +
 			"afterReevooMarkLoaded = [function () {{ReevooApi.each(\"{0}\".split(/[ ,]+/), function (retailer) {{window.ReevooMark=retailer; retailer.init_badges();retailer.init_reevoo_reputation_badges();}});}}];";
-
-		protected override void OnInit(EventArgs e)
-		{
-
-			if (String.IsNullOrEmpty(TkRef))
-			{
-				Trace.Write("TkRef property is empty; returning nothing");
-			}
-		}
+			
 
 		protected override void Render(HtmlTextWriter writer)
 		{	
@@ -39,15 +31,8 @@ namespace ReevooMark
 				string typeValue = "text/javascript";
 		
 
-				// this javascript uses ReevooMark, should try to do it in a different way
-				/*	string function ="(function () {{var script = document.createElement('script');" +
-					"script.type = 'text/javascript'; script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js'; " +
-					"var s = document.getElementById('reevoomark-loader'); s.parentNode.insertBefore(script, s); }})();" +
-					"afterReevooMarkLoaded = [];" +
-					"afterReevooMarkLoaded.push(function () {{ReevooApi.load(\"{0}\", function (retailer) {{window.ReevooMark=retailer;retailer.init_badges();retailer.init_reevoo_reputation_badges();}});}});"; */
-
 				string js_container = GetMarkLoaderScript();
-				string input = String.Format(js_container, TkRef);
+				string input = String.Format(js_container, TRKREF);
 					
 				writer.AddAttribute (HtmlTextWriterAttribute.Id, idValue);
 				writer.AddAttribute (HtmlTextWriterAttribute.Type, typeValue);
@@ -64,7 +49,7 @@ namespace ReevooMark
 
 		private String GetMarkLoaderScript()
 		{
-			if (TkRef.Contains (","))
+			if (TRKREF.Contains (","))
 				return MULTI_TRKREF_MARKLOADER;
 			else
 				return SINGLE_TRKREF_MARKLOADER;

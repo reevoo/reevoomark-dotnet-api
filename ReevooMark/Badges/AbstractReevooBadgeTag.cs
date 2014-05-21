@@ -12,17 +12,28 @@ namespace ReevooMark
 		public String VariantName
 		{
 			get { return variantName; }
-			set { variantName = value; }
+			set 
+			{ 
+				if (!String.IsNullOrEmpty(value)) 
+				{
+					if (!value.EndsWith ("_variant") && !value.Equals ("undecorated"))
+						this.variantName = value + "_variant";
+					else
+						this.variantName = value;
+				}
+			} 
 		}
 
+
 		public String BadgeClass {
-			get {
-				if (String.IsNullOrEmpty (VariantName)) {
+			get 
+			{
+				if (String.IsNullOrEmpty (VariantName))
 					return badgeClass;
-				} else {
-					return badgeClass + VariantName;
-				} 
+				else
+					return badgeClass +" "+ VariantName;
 			}
+		
 			set {badgeClass = value; }
 		}
 			
@@ -30,7 +41,7 @@ namespace ReevooMark
 		protected override void Render(HtmlTextWriter writer)
 		{	
 			try{
-				string hrefValue = String.Format(BaseUri, TkRef, SKU);
+				string hrefValue = String.Format(BaseUri, TRKREF, SKU);
 
 				writer.AddAttribute (HtmlTextWriterAttribute.Class, BadgeClass);
 				writer.AddAttribute (HtmlTextWriterAttribute.Href, hrefValue);

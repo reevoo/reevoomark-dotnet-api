@@ -12,14 +12,10 @@ namespace ReevooMark
 
 		protected override void OnInit(EventArgs e)
 		{
+			base.OnInit(e);
 			if (String.IsNullOrEmpty(SKU))
 			{
 				Trace.Write("SKU property is empty; returning nothing");
-			}
-
-			if (String.IsNullOrEmpty(TkRef))
-			{
-				Trace.Write("TRKREF property is empty; returning nothing");
 			}
 		}
 			

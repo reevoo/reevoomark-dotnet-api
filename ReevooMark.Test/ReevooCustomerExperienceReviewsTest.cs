@@ -11,17 +11,19 @@ namespace ReevooMark.Test
 	[TestFixture ()]
 	public class ReevooCustomerExperienceReviewsTest
 	{
-
-
+	
 		[Test]
 		[Category("Requires network connection")]
 		public void TestCustomerExperienceReviewsData()
 		{
 			CustomerExperienceReviews cx_reviews = new CustomerExperienceReviews();
+			System.IO.StringWriter sw = new System.IO.StringWriter ();
+			HtmlTextWriter writer = new HtmlTextWriter(sw);
 			cx_reviews.SKU = "";
-			cx_reviews.TkRef = "CYS";
-//			Console.WriteLine (cx_reviews.GetContent());
-			//Assert.AreEqual("http://mark.reevoo.com/reevoomark/embeddable_customer_experience_reviews?retailer=CYS&sku=",  cx_reviews.GetContent());
+			cx_reviews.TRKREF = "CYS";
+			cx_reviews.RenderControl (writer);
+			//	Console.WriteLine (sw.ToString());
+			//    Assert.AreEqual("", sw.ToString());
 		}
 	}
 }
