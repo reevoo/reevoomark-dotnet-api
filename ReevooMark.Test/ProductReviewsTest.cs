@@ -32,7 +32,7 @@ namespace ReevooMark.Test
         {
 
             RenderBadge(this.p_reviews);
-            this.mock_client.Verify(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_reviews"));
+                     this.mock_client.Verify(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_reviews"));
 
         }
 

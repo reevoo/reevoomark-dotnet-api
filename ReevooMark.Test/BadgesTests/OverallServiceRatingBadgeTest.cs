@@ -27,11 +27,8 @@ namespace ReevooMark.Test
             reputation_badge.TRKREF = "BAR";
             reputation_badge.VariantName = "undecorated";
             reputation_badge.RenderControl(writer);
-            Console.WriteLine(sw.ToString());
             Assert.AreEqual("<a class=\"reevoo_reputation undecorated\" href=\"//mark.reevoo.com/retailer/BAR\"></a>", sw.ToString());
         }
-
-
     }
 }
 

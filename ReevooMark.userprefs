@@ -1,39 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark/Badges/AbstractReevooBadgeTag.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark.Test/ProductReviewsTest.cs">
     <Files>
-      <File FileName="ReevooMark.Test/CustomerExperienceReviewsTest.cs" Line="70" Column="1" />
-      <File FileName="ReevooMark/CustomerExperienceReviews.cs" Line="11" Column="60" />
-      <File FileName="ReevooMark/Badges/AbstractReevooBadgeTag.cs" Line="27" Column="9" />
-      <File FileName="ReevooMark/AbstractReevooTag.cs" Line="34" Column="3" />
-      <File FileName="ReevooMark/AbstractReevooMarkClientTag.cs" Line="26" Column="69" />
-      <File FileName="ReevooMark/Badges/ConversationSeriesBadge.cs" Line="9" Column="10" />
-      <File FileName="ReevooMark/Badges/CustomerServiceRatingBadge.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark/ProductReviews.cs" Line="9" Column="79" />
-      <File FileName="ReevooMark/Conversations.cs" Line="8" Column="85" />
-      <File FileName="ReevooMark.Test/ProductReviews.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark.Test/ProductReviewsTest.cs" Line="65" Column="4" />
-      <File FileName="ReevooMark.Test/ConversationsTest.cs" Line="35" Column="128" />
-      <File FileName="ReevooMark.Test/CssAssetsTest.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark.Test/JavascriptAssetsTest.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark.Test/ReevooClientTests.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/ProductReviewsTest.cs" Line="35" Column="98" />
+      <File FileName="../../../../Library/Frameworks/Mono.framework/Versions/3.2.6/lib/mono/4.0/Microsoft.Common.targets" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/CustomerExperienceReviewsTest.cs" Line="1" Column="1" />
       <File FileName="ReevooMark.Test/packages.config" Line="1" Column="1" />
-      <File FileName="ReevooMark/Badges/ConversationsBadge.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark/Badges/DeliveryRatingBadge.cs" Line="9" Column="8" />
-      <File FileName="ReevooMark/Badges/OverallServiceRatingBadge.cs" Line="8" Column="4" />
-      <File FileName="ReevooMark/Badges/ProductBadge.cs" Line="1" Column="1" />
-      <File FileName="ReevooMark/Badges/ProductSeriesBadge.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="ReevooMark.Test" expanded="True">
-            <Node name="ReevooMark" expanded="True">
-              <Node name="Test" expanded="True">
-                <Node name="ProductReviewsTest" selected="True" />
-              </Node>
-            </Node>
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="ReevooMark.Test" expanded="True" />
         </State>
       </Pad>
     </Pads>
