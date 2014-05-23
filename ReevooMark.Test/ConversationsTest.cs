@@ -30,39 +30,13 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-
+            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
             RenderBadge(this.conversations);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_conversations"));
+            mock_client.VerifyAllExpectations();
 
         }
 
-        [Test]
-        public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocale()
-        {
-            this.conversations.NumberOfReviews = "5";
-            RenderBadge(this.conversations);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/5/embeddable_conversations"));
 
-        }
-
-        [Test]
-        public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingNumberOfReviews()
-        {
-            this.conversations.Locale = "fr-FR";
-            RenderBadge(this.conversations);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/embeddable_conversations"));
-
-        }
-
-        [Test]
-        public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocaleAndNumberOfReviews()
-        {
-            this.conversations.NumberOfReviews = "5";
-            this.conversations.Locale = "fr-FR";
-            RenderBadge(this.conversations);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/5/embeddable_conversations"));
-
-        }
     }
 }
 

@@ -34,9 +34,10 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-
+             
+            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_reviews"));
+            mock_client.VerifyAllExpectations();
 
         }
 
@@ -44,8 +45,9 @@ namespace ReevooMark.Test
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocale()
         {
             this.p_reviews.NumberOfReviews = "5";
+            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/5/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/5/embeddable_reviews"));
+            mock_client.VerifyAllExpectations();
 
         }
 
@@ -53,8 +55,9 @@ namespace ReevooMark.Test
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingNumberOfReviews()
         {
             this.p_reviews.Locale = "fr-FR";
+            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/embeddable_reviews"));
+            mock_client.VerifyAllExpectations();
 
         }
 
@@ -63,9 +66,9 @@ namespace ReevooMark.Test
         {
             this.p_reviews.NumberOfReviews = "5";
             this.p_reviews.Locale = "fr-FR";
+            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/5/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/fr-FR/5/embeddable_reviews"));
-
+            mock_client.VerifyAllExpectations();
         }
             
     }
