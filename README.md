@@ -41,10 +41,10 @@ For example,
 ```net
 <reevoo:JavascriptAssets runat="server"/>
 ```
-will initialize our Reevoo javascript assets with the default TRKREF provided in the web.config file, in this case TRKREF="PIU". You can override this default value by providing the TRKREF in the following way:
+will initialize our Reevoo javascript assets with the default TRKREF provided in the web.config file, in this case trkref="PIU". You can override this default value by providing the TRKREF in the following way:
 
 ```net
-<reevoo:JavascriptAssets  TRKREF="REV" runat="server"/>
+<reevoo:JavascriptAssets  trkref="REV" runat="server"/>
 ```
 
 ##Implementation
@@ -71,13 +71,13 @@ As before you may set an explicit TRKREF if you wish.
 
 
 ```net
-<reevvoo:JavascriptAssets  TRKREF="REV" runat="server"/>
+<reevvoo:JavascriptAssets  trkref="REV" runat="server"/>
 ```
 It also has support for multiple TRKREF'S.
 
 
 ```net
-<reevvoo:JavascriptAssets  TRKREF="REV, CYS, HYU" runat="server"/>
+<reevvoo:JavascriptAssets  trkref="REV, CYS, HYU" runat="server"/>
 ```
 
 
@@ -92,10 +92,10 @@ The ```SKU``` is compulsory but ```TRKREF``` and ```VariantName``` are optional.
 Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
 
 ```net
-  <reevoo:ProductBadge SKU="<SKU>" runat="server"/>
-  <reevoo:ProductBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:productBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
-  <reevoo:productBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="stars_only" runat="server"/>
+  <reevoo:ProductBadge sku="<SKU>" runat="server"/>
+  <reevoo:ProductBadge sku="<SKU>" trkref="<TRKREF>" runat="server"/>
+  <reevoo:ProductBadge sku="<SKU>" variantName="undecorated" runat="server"/>
+  <reevoo:ProductBadge sku="<SKU>" trkref="<TRKREF>" variantName="stars_only" runat="server"/>
 ```
 
 #### Conversations Badge
@@ -106,10 +106,10 @@ The ```SKU``` is compulsory but ```TRKREF``` and ```VariantName``` are optional.
 Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
 
 ```net
-  <reevoo:ConversationsBadge SKU="<SKU>" runat="server"/>
-  <reevoo:ConversationsBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:ConversationsBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
-  <reevoo:ConversationsBadge SKU="<SKU>" TRKREF="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:ConversationsBadge sku="<SKU>" runat="server"/>
+  <reevoo:ConversationsBadge sku="<SKU>" trkref="<TRKREF>" runat="server"/>
+  <reevoo:ConversationsBadge sku="<SKU>" variantName="undecorated" runat="server"/>
+  <reevoo:ConversationsBadge sku="<SKU>" trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 ### Series Badges
@@ -122,10 +122,10 @@ The ```SKU``` is compulsory and should be set to the series id. The ```TRKREF```
 Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
 
 ```net
-  <reevoo:ProductSeriesBadge SKU="<SKU>" runat="server" />
-  <reevoo:ProductSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:ProductSeriesBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
-  <reevoo:ProductSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:ProductSeriesBadge sku="<SKU>" runat="server" />
+  <reevoo:ProductSeriesBadge sku="<SKU>" trkref="<TRKREF>" runat="server"/>
+  <reevoo:ProductSeriesBadge sku="<SKU>" variantName="undecorated" runat="server"/>
+  <reevoo:ProductSeriesBadge sku="<SKU>" trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 #### Conversations Badges
@@ -136,10 +136,10 @@ The ```SKU``` is compulsory and should be set to the series id. The ```TRKREF```
 Make sure to replace `<SKU>`,`<TRKREF>` and `<VARIANT_NAME>` with the appropriate values.
 
 ```net
-  <reevoo:ConversationSeriesBadge SKU="<SKU>" runat="server"/>
-  <reevoo:ConversationSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:ConversationSeriesBadge SKU="<SKU>" VariantName="undecorated" runat="server"/>
-  <reevoo:ConversationSeriesBadge SKU="<SKU>" TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:ConversationSeriesBadge sku="<SKU>" runat="server"/>
+  <reevoo:ConversationSeriesBadge sku="<SKU>" trkref="<TRKREF>" runat="server"/>
+  <reevoo:ConversationSeriesBadge sku="<SKU>" variantName="undecorated" runat="server"/>
+  <reevoo:ConversationSeriesBadge sku="<SKU>" trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 ### Overall Service Rating Badges
@@ -151,9 +151,9 @@ Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values
 
 ```net
   <reevoo:OverallServiceRatingBadge runat="server"/>
-  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:OverallServiceRatingBadge VariantName="undecorated" runat="server"/>
-  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:OverallServiceRatingBadge trkref="<TRKREF>" runat="server"/>
+  <reevoo:OverallServiceRatingBadge variantName="undecorated" runat="server"/>
+  <reevoo:OverallServiceRatingBadge trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 ### Customer Service Rating Badges
@@ -165,9 +165,9 @@ Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values
 
 ```net
   <reevoo:CustomerServiceRatingBadge runat="server"/>
-  <reevoo:CustomerServiceRatingBadge TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:CustomerServiceRatingBadge VariantName="undecorated" runat="server"/>
-  <reevoo:OverallServiceRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:CustomerServiceRatingBadge trkref="<TRKREF>" runat="server"/>
+  <reevoo:CustomerServiceRatingBadge variantName="undecorated" runat="server"/>
+  <reevoo:CustomerServiceRatingBadge trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 ### Delivery Rating Badges
@@ -179,9 +179,9 @@ Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values
 
 ```net
   <reevoo:DeliveryRatingBadge runat="server"/>
-  <reevoo:DeliveryRatingBadge TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:DeliveryRatingBadge VariantName="undecorated" runat="server"/>
-  <reevoo:DeliveryRatingBadge TRKREF="<TRKREF>" VariantName="<VARIANT_NAME>" runat="server"/>
+  <reevoo:DeliveryRatingBadge trkref="<TRKREF>" runat="server"/>
+  <reevoo:DeliveryRatingBadge variantName="undecorated" runat="server"/>
+  <reevoo:DeliveryRatingBadge trkref="<TRKREF>" variantName="<VARIANT_NAME>" runat="server"/>
 ```
 
 ### Embedded Review Content
@@ -189,14 +189,15 @@ Make sure to replace `<TRKREF>` and `<VARIANT_NAME>` with the appropriate values
 To render "embedded review content" you can use any of the below.
 The ```SKU``` attribute is compulsory but ```TRKREF```, ```Locale``` and ```NumberOfReviews``` are optional.
 
-If you wish to use ```Locale``` or ```NumberOfReviews``` you must include the other.
+If you wish to use ```NumberOfReviews``` you must include the ```Locale```.
 
 Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` with the appropriate values.
 
 ```net
-  <reevoo:ProductReviews SKU="<SKU>" runat="server" />
-  <reevoo:ProductReviews SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:ProductReviews SKU="<SKU>" TRKREF="<TRKREF>" Locale="<LOCALE>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:ProductReviews sku="<SKU>" runat="server" />
+  <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" runat="server"/>
+  <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" runat="server"/>
+  <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
 ```
 
 #### Overall rating
@@ -208,24 +209,21 @@ The overall rating section at the top of inline reviews contains an overall scor
 If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
 
 ```net
-  <reevoo:productReviews SKU="<SKU>" runat="server">
+  <reevoo:ProductReviews sku="<SKU>" runat="server">
     <p>Sorry we don't have any reviews available right now</p>
-  </reevoo:productReviews>
+  </reevoo:ProductReviews>
 ```
 
 ### Embedded Conversation Content
 
 To render "embedded conversations content" you can use any of the below.
-The ```SKU``` attribute is compulsory but ```TRKREF```, ```Locale``` and ```NumberOfReviews``` are optional.
+The ```SKU``` attribute is compulsory but ```TRKREF``` is optional.
 
-If you wish to use ```Locale``` or ```NumberOfReviews``` you must include the other.
-
-Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` with the appropriate values.
+Make sure to replace `<SKU>` and `<TRKREF>` with the appropriate values.
 
 ```net
-  <reevoo:Conversations SKU="<SKU>" runat="server" />
-  <reevoo:Conversations SKU="<SKU>" TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:Conversations SKU="<SKU>" TRKREF="<TRKREF>" Locale="<LOCALE>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:Conversations sku="<SKU>" runat="server" />
+  <reevoo:Conversations sku="<SKU>" trkref="<TRKREF>" runat="server"/>
 ```
 
 #### Fallback
@@ -233,7 +231,7 @@ Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` 
 If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
 
 ```net
-  <reevoo:Conversations SKU="<SKU>" runat="server">
+  <reevoo:Conversations sku="<SKU>" runat="server">
     <p>Sorry we don't have any conversations available right now</p>
   </reevoo:Conversations>
 ```
@@ -247,9 +245,9 @@ Make sure to replace `<TRKREF>` and `<NUMBEROFREVIEWS>` with the appropriate val
 
 ```net
   <reevoo:CustomerExperienceReviews runat="server"/>
-  <reevoo:CustomerExperienceReviews TRKREF="<TRKREF>" runat="server"/>
-  <reevoo:CustomerExperienceReviews NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
-  <reevoo:CustomerExperienceReviews TRKREF="<TRKREF>" NumberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:CustomerExperienceReviews trkref="<TRKREF>" runat="server"/>
+  <reevoo:CustomerExperienceReviews numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:CustomerExperienceReviews trkref="<TRKREF>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
 ```
 
 #### Fallback
@@ -257,7 +255,7 @@ Make sure to replace `<TRKREF>` and `<NUMBEROFREVIEWS>` with the appropriate val
 If you would like to fall back to some content when Reevoo content is not available, just specify it within the tag:
 
 ```net
-  <reevoo:CustomerExperienceReviews SKU="<SKU>" runat="server">
+  <reevoo:CustomerExperienceReviews sku="<SKU>" runat="server">
     <p>Sorry we don't have any customer experience reviews available right now</p>
   </reevoo:CustomerExperienceReviews>
 ```
@@ -271,13 +269,13 @@ not provided by any of the previous tags. The tag name is "mark" and you can use
 Make sure to replace `<SKU>` and `<TRKREF>` with the appropriate values:
 
 ```net
-  <reevoo:Mark SKU="<SKU>" TRKREF="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/embeddable_reviews.html" runat="server"/>
+  <reevoo:Mark sku="<SKU>" trkref="<TRKREF>" BaseUri="http://mark.reevoo.com/reevoomark/embeddable_reviews.html" runat="server"/>
 ```
 
 It is also possible to specify locale and the number of reviews you'd like in the baseURI:
 
 ```net
-  <reevoo:Mark SKU="<SKU>" TRKREF="<TRKREF>" baseURI="http://mark.reevoo.com/reevoomark/fr-FR/10/embeddable_reviews.html" runat="server" />
+  <reevoo:Mark sku="<SKU>" trkref="<TRKREF>" baseURI="http://mark.reevoo.com/reevoomark/fr-FR/10/embeddable_reviews.html" runat="server" />
 ```
 
 ### Rendering Issues

@@ -113,16 +113,23 @@ namespace ReevooMark
 
             _req.CachePolicy = _cachePolicy;
 
-            HttpWebResponse _res;
+            HttpWebResponse _res = null;
             String _content = String.Empty;
             try {
                 //stream web content into a string
-                _res = (HttpWebResponse)_req.GetResponse ();
-                
-                
-                using (var s = new StreamReader (_res.GetResponseStream ())) {
-                    _content = s.ReadToEnd ();
+                try {
+                    _res = (HttpWebResponse)_req.GetResponse ();
+                } catch (WebException e) {
+                    _res = (HttpWebResponse)e.Response;
                 }
+                if( _res.StatusCode == HttpStatusCode.OK){
+                    using (var s = new StreamReader (_res.GetResponseStream ())) {
+                        _content = s.ReadToEnd ();
+                    }
+                } else {
+                    _content = null;    
+                }
+ 
             } catch (Exception e_) {
                 throw new ReevooException (e_);
             }

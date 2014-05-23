@@ -36,7 +36,7 @@ namespace ReevooMark
         protected override void Render (HtmlTextWriter writer)
         {    
             try {
-                string hrefValue = String.Format (BaseUri, TRKREF, SKU);
+                string hrefValue = String.Format (BaseUri, Trkref, Sku);
 
                 writer.AddAttribute (HtmlTextWriterAttribute.Class, BadgeClass);
                 writer.AddAttribute (HtmlTextWriterAttribute.Href, hrefValue);

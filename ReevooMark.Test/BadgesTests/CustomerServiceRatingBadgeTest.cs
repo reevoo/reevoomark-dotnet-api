@@ -15,7 +15,7 @@ namespace ReevooMark.Test
         {    
             System.IO.StringWriter sw = new System.IO.StringWriter();
             HtmlTextWriter writer = new HtmlTextWriter(sw);
-            cs_badge.TRKREF = "BAR";
+            cs_badge.Trkref = "BAR";
             cs_badge.RenderControl(writer);
             Assert.AreEqual("<a class=\"reevoo_reputation customer_service\" href=\"//mark.reevoo.com/retailer/BAR\"></a>", sw.ToString());
         }
@@ -25,7 +25,7 @@ namespace ReevooMark.Test
         {
             System.IO.StringWriter sw = new System.IO.StringWriter();
             HtmlTextWriter writer = new HtmlTextWriter(sw);
-            cs_badge.TRKREF = "BAR";
+            cs_badge.Trkref = "BAR";
             cs_badge.VariantName = "undecorated";
             cs_badge.RenderControl(writer);
             Assert.AreEqual("<a class=\"reevoo_reputation customer_service undecorated\" href=\"//mark.reevoo.com/retailer/BAR\"></a>", sw.ToString());
@@ -33,4 +33,5 @@ namespace ReevooMark.Test
             
     }
 }
+
 

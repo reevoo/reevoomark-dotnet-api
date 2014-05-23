@@ -14,8 +14,8 @@ namespace ReevooMark.Test
         {    
             System.IO.StringWriter sw = new System.IO.StringWriter ();
             HtmlTextWriter writer = new HtmlTextWriter(sw);
-            product_badge.TRKREF = "BAR";
-            product_badge.SKU = "FOO";
+            product_badge.Trkref = "BAR";
+            product_badge.Sku = "FOO";
             product_badge.RenderControl(writer);
             Assert.AreEqual("<a class=\"reevoomark\" href=\"//mark.reevoo.com/partner/BAR/FOO\"></a>", sw.ToString());
         }
@@ -25,8 +25,8 @@ namespace ReevooMark.Test
         {
             System.IO.StringWriter sw = new System.IO.StringWriter ();
             HtmlTextWriter writer = new HtmlTextWriter(sw);
-            product_badge.TRKREF = "BAR";
-            product_badge.SKU = "FOO";
+            product_badge.Trkref = "BAR";
+            product_badge.Sku = "FOO";
             product_badge.VariantName = "search_page";
             product_badge.RenderControl(writer);
             Assert.AreEqual("<a class=\"reevoomark search_page_variant\" href=\"//mark.reevoo.com/partner/BAR/FOO\"></a>", sw.ToString());

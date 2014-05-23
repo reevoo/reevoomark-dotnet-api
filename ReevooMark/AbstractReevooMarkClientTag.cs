@@ -6,7 +6,7 @@ namespace ReevooMark
     {
         protected String _locale = "";
         protected String _numberOfReviews = "";
-        public ReevooClient client = new ReevooClient (2000);
+        public ReevooClient client = new ReevooClient ();
 
         protected override void OnInit (EventArgs e)
         {
@@ -16,14 +16,19 @@ namespace ReevooMark
 
         protected override void Render (System.Web.UI.HtmlTextWriter writer)
         {    
-            writer.Write (this.GetContent ());
+            String content = GetContent ();
+            if (content == null) {
+                writer.Write (Text);
+            } else {
+                writer.Write (content);
+            }
         }
 
         public String GetContent ()
         {
             String _content;
             try {
-                _content = client.ObtainReevooMarkData (TRKREF, SKU, BuildUrl ()).Content;
+                _content = client.ObtainReevooMarkData (Trkref, Sku, BuildUrl ()).Content;
             } catch (ReevooException re_) {
                 //We wrap all exceptions with a ReevooException. Log the error & return the empty string.
                 Trace.Write (re_.Message);

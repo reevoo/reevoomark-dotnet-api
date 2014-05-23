@@ -16,17 +16,17 @@ namespace ReevooMark
         protected override void OnInit (EventArgs e)
         {
 
-            if (String.IsNullOrEmpty (TRKREF) && String.IsNullOrEmpty (WebConfigurationManager.AppSettings ["TRKREF"])) {
-                Trace.Write ("TRKREF property is empty; returning nothing");
-            } else if (String.IsNullOrEmpty (TRKREF)) {
-                this.TRKREF = WebConfigurationManager.AppSettings ["TRKREF"]; 
+            if (String.IsNullOrEmpty (Trkref) && String.IsNullOrEmpty (WebConfigurationManager.AppSettings ["Trkref"])) {
+                Trace.Write ("Trkref property is empty; returning nothing");
+            } else if (String.IsNullOrEmpty (Trkref)) {
+                this.Trkref = WebConfigurationManager.AppSettings ["Trkref"]; 
             }
 
         }
 
-        public String SKU { get; set; }
+        public String Sku { get; set; }
 
-        public String TRKREF { get; set; }
+        public String Trkref { get; set; }
 
         [DefaultValue ("")]
         public String Text { get; set; }
