@@ -98,18 +98,5 @@ namespace ReevooMark.Test
             Assert.AreEqual(0, ReevooClient.GetReviewCount(_badHeaders), "GetReviewCount should return zero for bad data");
         }
 
-        [Test]
-        [Category("Requires network connection")]
-        public void TestGetReevooMarkData()
-        {
-            Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("TSC", "67255143", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
-        }
-
-        [Test]
-        [Category("Requires network connection")]
-        public void TestGetSeriesReevooMarkData()
-        {
-            Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("GMXT-FOC-N", "series:ford-ka", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
-        }
     }
 }
