@@ -37,9 +37,9 @@
                     <reevoo:ProductSeriesBadge trkref="HYU" sku="i20" runat="server" />
                     <h2>Conversation Series Badge </h2>
                     <reevoo:ConversationSeriesBadge trkref="HYU" sku="i20" runat="server" />
-                    <reevoo:Mark trkref="REV" sku="167823" BaseUri ="http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews" runat="server" />
                     <h2>Product Reviews with locale</h2>
                 	<reevoo:ProductReviews sku="167823" trkref="REV" locale="fr-FR" numberOfReviews="5" runat="server"/>
+ 					<reevoo:Mark sku="167823" BaseUri ="http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews" runat="server"> Hello </reevoo:Mark>
                     <reevoo:JavascriptAssets trkref="CYS,REV,EBU,PIU,HYU,TSC" runat="server"/>
                 </div>
             </div>
