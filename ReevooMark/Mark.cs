@@ -1,36 +1,35 @@
 ﻿using System;
+using System.Web.UI;
+using System.ComponentModel;
+using System.Web.Configuration;
 
 namespace ReevooMark
 {
     /// <summary>
     /// A <see cref="System.Web.UI.UserControl"/> for showing in-line reviews for Reevoo products
     /// </summary>
-    public class Mark : System.Web.UI.UserControl
+    public class Mark : AbstractReevooTag
     {
-        /// <summary>
-        /// A sensible default for the base URI; so this property is optional
-        /// </summary>
-        private string _baseUri = @"http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews";
-
-        protected override void OnInit(EventArgs e)
+        public Mark()
         {
-            if (String.IsNullOrEmpty(SKU))
-            {
-                Trace.Write("SKU property is empty; returning nothing");
-            }
-
-            if (String.IsNullOrEmpty(TkRef))
-            {
-                Trace.Write("SKU property is empty; returning nothing");
-            }
+            this.BaseUri = @"http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews";
         }
 
+        protected override void OnInit (EventArgs e)
+        {
+            base.OnInit (e);
+            if (String.IsNullOrEmpty (Sku)) {
+                Trace.Write ("Sku property is empty; returning nothing");
+            }
+
+        }
+            
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
             String _content;
             try
             {
-                _content = new ReevooClient().ObtainReevooMarkData(TkRef, SKU, BaseUri).Content;
+                _content = new ReevooClient().ObtainReevooMarkData(Trkref, Sku, BaseUri).Content;
             }
             catch (ReevooException re_)
             {
@@ -41,14 +40,5 @@ namespace ReevooMark
             writer.Write(_content);
         }
 
-        public String SKU { get; set; }
-        public String TkRef { get; set; }
-
-        //provide a sensible default for BaseUri, seeing as we know it.
-        public String BaseUri
-        {
-            get { return _baseUri; }
-            set { _baseUri = value; }
-        }
     }
 }

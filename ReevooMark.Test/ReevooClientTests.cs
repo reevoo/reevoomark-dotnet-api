@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using ReevooMark;
-
 using NUnit.Framework;
 using System.Net;
 
@@ -67,9 +65,9 @@ namespace ReevooMark.Test
         public void TestGetQueryString()
         {
             string _sku = @"foo";
-            string _tkref = @"bar";
+            string _trkref = @"bar";
 
-            StringAssert.IsMatch("sku=foo&retailer=bar", ReevooClient.GetQueryString(_tkref, _sku));
+            StringAssert.IsMatch("sku=foo&retailer=bar", ReevooClient.GetQueryString(_trkref, _sku));
         }
 
         [Test]
@@ -100,18 +98,5 @@ namespace ReevooMark.Test
             Assert.AreEqual(0, ReevooClient.GetReviewCount(_badHeaders), "GetReviewCount should return zero for bad data");
         }
 
-        [Test]
-        [Category("Requires network connection")]
-        public void TestGetReevooMarkData()
-        {
-            Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("TSC", "67255143", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
-		}
-
-		[Test]
-		[Category("Requires network connection")]
-		public void TestGetSeriesReevooMarkData()
-		{
-			Assert.AreNotEqual(String.Empty, new ReevooClient().ObtainReevooMarkData("GMXT-FOC-N", "series:ford-ka", "http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews").Content);
-		}
     }
 }

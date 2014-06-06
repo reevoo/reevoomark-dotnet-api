@@ -11,11 +11,17 @@ namespace ReevooMark
     public struct ReevooMarkData
     {
         public String Sku { get; internal set; }
+
         public String Retailer { get; internal set; }
+
         public int ReviewCount { get; internal set; }
+
         public String BestPrice { get; internal set; }
+
         public String Content { get; internal set; }
+
         public int ScoreCount { get; internal set; }
+
         public String OverallScore { get; internal set; }
     }
 }

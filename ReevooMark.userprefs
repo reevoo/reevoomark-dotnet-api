@@ -1,0 +1,37 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ReevooMark.Test/ConversationsTest.cs">
+    <Files>
+      <File FileName="ReevooMark.Test/ProductReviewsTest.cs" Line="1" Column="1" />
+      <File FileName="../../../../Library/Frameworks/Mono.framework/Versions/3.2.6/lib/mono/4.0/Microsoft.Common.targets" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/CustomerExperienceReviewsTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/packages.config" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooMarkData.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooClient.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/JavascriptAssets.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/ReevooClientTests.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/AbstractReevooMarkClientTag.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ProductReviews.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/AbstractReevooTag.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ProductBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ConversationsBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ProductSeriesBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/ConversationSeriesBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Conversations.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Mark.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/CustomerExperienceReviews.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/AbstractReevooBadgeTag.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Badges/CustomerServiceRatingBadge.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/CssAssets.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark/ReevooException.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/JavascriptAssetsTest.cs" Line="1" Column="1" />
+      <File FileName="ReevooMark.Test/ConversationsTest.cs" Line="43" Column="1" />
+      <File FileName="ReevooMark.Test/CssAssetsTest.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
