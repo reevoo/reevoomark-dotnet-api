@@ -7,10 +7,10 @@ namespace ReevooMark
     public class JavascriptAssets:AbstractReevooTag
     {
         const String SINGLE_TRKREF_MARKLOADER = "(function () {{var script = document.createElement('script'); " +
-                                                  "script.type = 'text/javascript'; " +
+                                                  "script.type = 'text/javascript';" +
                                                   "script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js';" +
-                                                  "var s = document.getElementById('reevoomark-loader'); " +
-                                                  "s.parentNode.insertBefore(script, s); }})();" +
+                                                  "var s = document.getElementById('reevoomark-loader');" +
+                                                  "s.parentNode.insertBefore(script, s);}})();" +
                                                   "afterReevooMarkLoaded = [];" +
                                                   "afterReevooMarkLoaded.push(function () {{ReevooApi.load(\"{0}\", function (retailer) {{retailer.init_badges();retailer.init_reevoo_reputation_badges();}});}});";
         const String MULTI_TRKREF_MARKLOADER = "(function () {{var script = document.createElement('script');" +
