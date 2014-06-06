@@ -16,7 +16,8 @@ namespace ReevooMark.Test
             HtmlTextWriter writer = new HtmlTextWriter(sw);
             js.Trkref = "FOO";
             js.RenderControl(writer);
-            Assert.AreEqual(sw.ToString(), "<script id=\"reevoomark-loader\" type=\"text/javascript\">\n\t(function () {var script = document.createElement('script'); script.type = 'text/javascript'; script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js';var s = document.getElementById('reevoomark-loader'); s.parentNode.insertBefore(script, s); })();afterReevooMarkLoaded = [];afterReevooMarkLoaded.push(function () {ReevooApi.load(\"FOO\", function (retailer) {retailer.init_badges();retailer.init_reevoo_reputation_badges();});});\n</script>");
+            string content_without_new_line = sw.ToString().Replace(System.Environment.NewLine, "");
+            Assert.AreEqual(content_without_new_line, "<script id=\"reevoomark-loader\" type=\"text/javascript\">\t(function () {var script = document.createElement('script'); script.type = 'text/javascript';script.src = '//cdn.mark.reevoo.com/assets/reevoo_mark.js';var s = document.getElementById('reevoomark-loader');s.parentNode.insertBefore(script, s);})();afterReevooMarkLoaded = [];afterReevooMarkLoaded.push(function () {ReevooApi.load(\"FOO\", function (retailer) {retailer.init_badges();retailer.init_reevoo_reputation_badges();});});</script>");
         
         }
     }
