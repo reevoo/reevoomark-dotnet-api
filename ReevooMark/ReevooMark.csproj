@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\ReevooMark.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,30 +43,56 @@
     <Compile Include="ReevooClient.cs" />
     <Compile Include="ReevooException.cs" />
     <Compile Include="ReevooMarkData.cs" />
-    <Compile Include="AbstractReevooTag.cs" />
+    <Compile Include="AbstractReevooTag.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ProductReviews.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomerExperienceReviews.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CssAssets.cs" />
-    <Compile Include="JavascriptAssets.cs" />
-    <Compile Include="Badges\AbstractReevooBadgeTag.cs" />
+    <Compile Include="CssAssets.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JavascriptAssets.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Badges\AbstractReevooBadgeTag.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Badges\DeliveryRatingBadge.cs">
       <DependentUpon>AbstractReevooBadgeTag.cs</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Badges\OverallServiceRatingBadge.cs">
       <DependentUpon>AbstractReevooBadgeTag.cs</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Badges\ProductBadge.cs" />
-    <Compile Include="Badges\CustomerServiceRatingBadge.cs" />
-    <Compile Include="Badges\ConversationsBadge.cs" />
-    <Compile Include="Badges\ProductSeriesBadge.cs" />
-    <Compile Include="Badges\ConversationSeriesBadge.cs" />
-    <Compile Include="Conversations.cs" />
-    <Compile Include="Mark.cs" />
-    <Compile Include="AbstractReevooMarkClientTag.cs" />
+    <Compile Include="Badges\ProductBadge.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Badges\CustomerServiceRatingBadge.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Badges\ConversationsBadge.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Badges\ProductSeriesBadge.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Badges\ConversationSeriesBadge.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Conversations.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mark.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AbstractReevooMarkClientTag.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -73,7 +102,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Badges\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

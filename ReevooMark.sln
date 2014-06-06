@@ -1,9 +1,16 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReevooMark", "ReevooMark\ReevooMark.csproj", "{764AA3CC-F335-4BB6-BE7A-22F1A2A285AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReevooMark.Test", "ReevooMark.Test\ReevooMark.Test.csproj", "{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DAC3FC4F-1A11-4ECF-B46E-6E66D4C9AB67}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +18,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{764AA3CC-F335-4BB6-BE7A-22F1A2A285AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{764AA3CC-F335-4BB6-BE7A-22F1A2A285AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{764AA3CC-F335-4BB6-BE7A-22F1A2A285AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{764AA3CC-F335-4BB6-BE7A-22F1A2A285AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB9A9F3-65D3-4DC2-89DE-43A05AD029A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ReevooMark\ReevooMark.csproj
@@ -26,7 +36,7 @@ Global
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
 		$1.ResourceNamePolicy = FileFormatDefault
-		$0.TextStylePolicy = $2
+		$0.TextStylePolicy = $5
 		$2.inheritsSet = null
 		$2.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $3
@@ -34,19 +44,14 @@ Global
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp
 		$3.scope = text/x-csharp
-		$0.TextStylePolicy = $4
 		$4.inheritsSet = VisualStudio
 		$4.inheritsScope = text/plain
 		$4.scope = text/plain
-		$0.TextStylePolicy = $5
 		$5.inheritsSet = null
 		$5.scope = application/xml
 		$0.XmlFormattingPolicy = $6
 		$6.inheritsSet = Mono
 		$6.inheritsScope = application/xml
 		$6.scope = application/xml
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

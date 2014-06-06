@@ -33,18 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ReevooMark">
-      <HintPath>..\..\ReevooMark\bin\Release\ReevooMark.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="ReevooMark">
+      <HintPath>..\packages\ReevooMark.1.1.0\lib\net20\ReevooMark.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="testingProductReviews.aspx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
