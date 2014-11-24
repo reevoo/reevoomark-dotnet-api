@@ -22,7 +22,7 @@ namespace ReevooMark
         //members marked as 'internal' - package visibility. 'InternalsVisibleTo' attribute
         //in AssemblyInfo.cs exposes internal members to the test assembly.
         internal const String QUERYSTRING_SKU = "sku";
-        internal const String QUERYSTRING_RETAILER = "retailer";
+        internal const String QUERYSTRING_TRKREF = "trkref";
         internal const String HEADER_OVERALL_SCORE = "X-Reevoo-OverallScore";
         internal const String HEADER_SCORE_COUNT = "X-Reevoo-ScoreCount";
         internal const String HEADER_REVIEW_COUNT = "X-Reevoo-ReviewCount";
@@ -62,9 +62,9 @@ namespace ReevooMark
         #region Public API
 
         /// <summary>
-        /// Get ReevooMark data for a given product and retailer code.
+        /// Get ReevooMark data for a given product and trkref.
         /// </summary>
-        /// <param name="trkref_">Your retailer code</param>
+        /// <param name="trkref_">Your trkref</param>
         /// <param name="sku_">The product code</param>
         /// <param name="baseUri_">The base URI for the request - provided by Reevoo.</param>
         /// <returns>An instance of <see cref="ReevooMarkData"/></returns>
@@ -146,12 +146,12 @@ namespace ReevooMark
         }
 
         /// <summary>
-        /// Constructs a querystring based on product and retailer codes.
+        /// Constructs a querystring based on product and trkref.
         /// </summary>
         internal static string GetQueryString (string trkref_, string sku_)
         {
-            //construct a string in the format "sku=foo&retailer=bar"
-            return String.Format (REEVOO_QUERYSTRING_FORMAT, QUERYSTRING_SKU, sku_, QUERYSTRING_RETAILER, trkref_);
+            //construct a string in the format "sku=foo&trkref=bar"
+            return String.Format (REEVOO_QUERYSTRING_FORMAT, QUERYSTRING_SKU, sku_, QUERYSTRING_TRKREF, trkref_);
         }
 
         #region Get header data
