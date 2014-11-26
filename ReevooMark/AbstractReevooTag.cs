@@ -2,6 +2,7 @@
 using System.Web.UI;
 using System.ComponentModel;
 using System.Web.Configuration;
+using System.Collections.Generic;
 
 namespace ReevooMark
 {
@@ -22,7 +23,15 @@ namespace ReevooMark
                 this.Trkref = WebConfigurationManager.AppSettings ["Trkref"]; 
             }
 
-        }
+		}
+
+		public virtual Parameters BuildParams ()
+		{
+			return new Parameters () {
+				{ "trkref", Trkref },
+				{ "sku", Sku },
+			};
+		}
 
         public String Sku { get; set; }
 

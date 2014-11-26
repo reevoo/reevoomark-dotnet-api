@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ReevooMark
 {
@@ -23,5 +24,7 @@ namespace ReevooMark
         public int ScoreCount { get; internal set; }
 
         public String OverallScore { get; internal set; }
+
+		public Parameters Params { get; internal set; }
     }
 }

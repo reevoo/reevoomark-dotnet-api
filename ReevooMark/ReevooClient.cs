@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Cache;
 using System.IO;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace ReevooMark
 {
@@ -21,8 +22,12 @@ namespace ReevooMark
     {
         //members marked as 'internal' - package visibility. 'InternalsVisibleTo' attribute
         //in AssemblyInfo.cs exposes internal members to the test assembly.
-        internal const String QUERYSTRING_SKU = "sku";
-        internal const String QUERYSTRING_TRKREF = "trkref";
+		internal const String QUERYSTRING_SKU = "sku";
+		internal const String QUERYSTRING_TRKREF = "trkref";
+		internal const String QUERYSTRING_PER_PAGE = "per_page";
+		internal const String QUERYSTRING_PAGE = "page";
+		internal const String QUERYSTRING_SORT_BY = "sort_by";
+		internal const String QUERYSTRING_FILTER = "filter";
         internal const String HEADER_OVERALL_SCORE = "X-Reevoo-OverallScore";
         internal const String HEADER_SCORE_COUNT = "X-Reevoo-ScoreCount";
         internal const String HEADER_REVIEW_COUNT = "X-Reevoo-ReviewCount";
@@ -38,7 +43,7 @@ namespace ReevooMark
         /// Declares the signature for the ObtainReevooMarkDataInternal function,
         /// allowing it to be run asynchronously
         /// </summary>
-        private delegate ReevooMarkData ObtainMarkDataDelegate (String trkref_, String sku_, String baseUri_);
+		private delegate ReevooMarkData ObtainMarkDataDelegate (Parameters params_, String baseUri_);
 
         #region Constructors
 
@@ -60,6 +65,14 @@ namespace ReevooMark
         #endregion
 
         #region Public API
+		public virtual ReevooMarkData ObtainReevooMarkData (string trkref_, string sku_, String baseUri_)
+		{
+			Parameters _paramDict = new Parameters () {
+				{ "trkref", trkref_ },
+				{ "sku", sku_ },
+			};
+			return ObtainReevooMarkData(_paramDict, baseUri_);
+		}
 
         /// <summary>
         /// Get ReevooMark data for a given product and trkref.
@@ -69,7 +82,7 @@ namespace ReevooMark
         /// <param name="baseUri_">The base URI for the request - provided by Reevoo.</param>
         /// <returns>An instance of <see cref="ReevooMarkData"/></returns>
         /// <exception cref="ReevooException">If anything bad happened whilst getting mark data</exception>
-        public virtual ReevooMarkData ObtainReevooMarkData (String trkref_, String sku_, String baseUri_)
+		public virtual ReevooMarkData ObtainReevooMarkData (Parameters params_, String baseUri_)
         {
             //this function delegates to 'ObtainReevooMarkDataInternal', which handles
             //the logic of actually getting and parsing the data from the ReevooMark service.
@@ -85,7 +98,7 @@ namespace ReevooMark
 
             var _doWork = new ObtainMarkDataDelegate (ObtainReevooMarkDataInternal);
 
-            var _iar = _doWork.BeginInvoke (trkref_, sku_, baseUri_, null, null);
+			var _iar = _doWork.BeginInvoke (params_, baseUri_, null, null);
 
             if (!_iar.AsyncWaitHandle.WaitOne (_timeout, false)) {
                 throw new ReevooException (new TimeoutException ("Web request timed out."));
@@ -99,10 +112,10 @@ namespace ReevooMark
         /// <summary>
         /// Internal method which does the actual work of getting the Mark data.
         /// </summary>
-        private ReevooMarkData ObtainReevooMarkDataInternal (String trkref_, String sku_, String baseUri_)
+		private ReevooMarkData ObtainReevooMarkDataInternal (Parameters params_, String baseUri_)
         {
             var _builder = new UriBuilder (baseUri_);
-            _builder.Query = GetQueryString (trkref_, sku_);
+			_builder.Query = params_.ToQueryString();
 
             HttpWebRequest _req = (HttpWebRequest)WebRequest.Create (_builder.ToString ());
 
@@ -140,18 +153,10 @@ namespace ReevooMark
                 ReviewCount = GetReviewCount (_res.Headers),
                 ScoreCount = GetScoreCount (_res.Headers),
                 OverallScore = GetOverallScore (_res.Headers),
-                Retailer = trkref_,
-                Sku = sku_
+				Sku = params_["sku"],
+				Retailer = params_["trkref"],
+				Params = params_,
             };
-        }
-
-        /// <summary>
-        /// Constructs a querystring based on product and trkref.
-        /// </summary>
-        internal static string GetQueryString (string trkref_, string sku_)
-        {
-            //construct a string in the format "sku=foo&trkref=bar"
-            return String.Format (REEVOO_QUERYSTRING_FORMAT, QUERYSTRING_SKU, sku_, QUERYSTRING_TRKREF, trkref_);
         }
 
         #region Get header data

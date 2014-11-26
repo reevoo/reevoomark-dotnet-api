@@ -30,7 +30,7 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
             RenderBadge(this.conversations);
             mock_client.VerifyAllExpectations();
 

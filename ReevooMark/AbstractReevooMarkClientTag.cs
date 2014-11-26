@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ReevooMark
 {
@@ -6,6 +7,7 @@ namespace ReevooMark
     {
         protected String _locale = "";
         protected String _numberOfReviews = "";
+		protected String _paginated = "";
         public ReevooClient client = new ReevooClient ();
 
         protected override void OnInit (EventArgs e)
@@ -28,7 +30,7 @@ namespace ReevooMark
         {
             String _content;
             try {
-                _content = client.ObtainReevooMarkData (Trkref, Sku, BuildUrl ()).Content;
+				_content = client.ObtainReevooMarkData (BuildParams(), BuildUrl()).Content;
             } catch (ReevooException re_) {
                 //We wrap all exceptions with a ReevooException. Log the error & return the empty string.
                 Trace.Write (re_.Message);
@@ -36,6 +38,16 @@ namespace ReevooMark
             }
             return _content;
         }
+
+		public override Parameters BuildParams ()
+		{
+			return new Parameters () {
+				{ "trkref", Trkref },
+				{ "sku", Sku },
+				{ "per_page", IsPaginated() ? NumberOfReviews : null },
+				{ "page", IsPaginated() ? "1" : null },
+			};
+		}
 
         public String BuildUrl ()
         {
@@ -61,6 +73,19 @@ namespace ReevooMark
                 _numberOfReviews = value;
             }
         }
+
+		public String Paginated {
+			get {
+				return _paginated;
+			}
+			set {
+				_paginated = value;
+			}
+		}
+
+		public bool IsPaginated() {
+			return Paginated == "true" || Paginated == "yes";
+		}
     }
 }
 
