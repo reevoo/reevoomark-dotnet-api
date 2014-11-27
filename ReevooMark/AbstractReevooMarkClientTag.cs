@@ -40,40 +40,29 @@ namespace ReevooMark {
 		protected override Parameters BuildParams () {
 			return new Parameters () {
 				{ "locale", Locale },
-				{ "reviews", IsPaginated() ? null : NumberOfReviews },
+				{ "reviews", IsPaginated() ? null : NumberOfReviews }, // we are using 'reviews' when not paginated
 				{ "trkref", Trkref },
 				{ "sku", Sku },
-				{ "per_page", IsPaginated() ? NumberOfReviews : null },
-				{ "page", CurrentPage() },
-				{ "sort_by", SortBy() },
-				{ "filter", Filter() },
+				{ "per_page", IsPaginated() ? NumberOfReviews : null }, // we are using 'per_page' when paginated
+				{ "page", GetReevooParam("page", "1") },
+				{ "sort_by", GetReevooParam("sort_by") },
+				{ "filter", GetReevooParam("filter") },
 			};
 		}
-
-		protected string SortBy() {
-			if (!IsPaginated())
-				return null;
-
-			return GetRequestParamValue("reevoo_sort_by");
+		protected string GetReevooParam(string paramName) {
+			return GetReevooParam (paramName, null);
 		}
 
-		protected string CurrentPage() {
+		protected string GetReevooParam(string paramName, string defaultValue) {
 			if (!IsPaginated())
 				return null;
 
-			string reevooPage = GetRequestParamValue("reevoo_page");
+			string paramValue = GetRequestParamValue("reevoo_" + paramName);
 
-			if (reevooPage != null)
-				return reevooPage;
+			if (paramValue != null)
+				return paramValue;
 
-			return "1";
-		}
-
-		protected string Filter() {
-			if (!IsPaginated())
-				return null;
-
-			return GetRequestParamValue("reevoo_filter");
+			return defaultValue;
 		}
 
 		protected string GetRequestParamValue(string key) {
