@@ -4,18 +4,16 @@ using System.ComponentModel;
 using System.Web.Configuration;
 using System.Collections.Generic;
 
-namespace ReevooMark
-{
+namespace ReevooMark {
+
     /// <summary>
     /// Base abstact class <see cref="System.Web.UI.UserControl"/> for showing Reevoomark products.
     /// </summary>
     [ParseChildren (true, "Text")]
-    public abstract class AbstractReevooTag : System.Web.UI.UserControl
-    {
+    public abstract class AbstractReevooTag : System.Web.UI.UserControl {
         protected string _baseUri;
 
-        protected override void OnInit (EventArgs e)
-        {
+        protected override void OnInit (EventArgs e) {
 
             if (String.IsNullOrEmpty (Trkref) && String.IsNullOrEmpty (WebConfigurationManager.AppSettings ["Trkref"])) {
                 Trace.Write ("Trkref property is empty; returning nothing");
@@ -25,8 +23,7 @@ namespace ReevooMark
 
 		}
 
-		public virtual Parameters BuildParams ()
-		{
+		public virtual Parameters BuildParams () {
 			return new Parameters () {
 				{ "trkref", Trkref },
 				{ "sku", Sku },

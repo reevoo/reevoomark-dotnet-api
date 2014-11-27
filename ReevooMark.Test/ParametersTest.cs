@@ -3,11 +3,10 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using System.Collections.Generic;
 
-namespace ReevooMark.Test
-{
+namespace ReevooMark.Test {
+
     [TestFixture()]
-    public class ParametersTest
-    {
+    public class ParametersTest {
         Parameters _subject;
 
         [SetUp]

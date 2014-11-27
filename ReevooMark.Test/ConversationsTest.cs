@@ -14,6 +14,9 @@ namespace ReevooMark.Test
         [SetUp]
         public void setup()
         {
+            // Very helpful for debugging
+            RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
+
             this.mock_client = MockRepository.GenerateMock<ReevooClient>();
             this.conversations = new Conversations();
             this.conversations.Trkref = "FOO";
@@ -30,7 +33,7 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
             RenderBadge(this.conversations);
             mock_client.VerifyAllExpectations();
 

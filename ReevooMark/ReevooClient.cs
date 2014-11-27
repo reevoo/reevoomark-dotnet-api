@@ -5,8 +5,8 @@ using System.IO;
 using System.Threading;
 using System.Collections.Generic;
 
-namespace ReevooMark
-{
+namespace ReevooMark {
+
     /// <summary>
     /// Simple HTTP agent used for getting Reevoo Mark data.
     /// <remarks>
@@ -18,8 +18,7 @@ namespace ReevooMark
     /// before calling <see cref="ReevooClient.ObtainReevooMarkData()"/>.
     /// </remarks>
     /// </summary>
-    public class ReevooClient
-    {
+    public class ReevooClient {
         //members marked as 'internal' - package visibility. 'InternalsVisibleTo' attribute
         //in AssemblyInfo.cs exposes internal members to the test assembly.
 		internal const String QUERYSTRING_SKU = "sku";
@@ -65,8 +64,7 @@ namespace ReevooMark
         #endregion
 
         #region Public API
-		public virtual ReevooMarkData ObtainReevooMarkData (string trkref_, string sku_, String baseUri_)
-		{
+		public virtual ReevooMarkData ObtainReevooMarkData (string trkref_, string sku_, String baseUri_) {
 			Parameters _paramDict = new Parameters () {
 				{ "trkref", trkref_ },
 				{ "sku", sku_ },
@@ -82,8 +80,7 @@ namespace ReevooMark
         /// <param name="baseUri_">The base URI for the request - provided by Reevoo.</param>
         /// <returns>An instance of <see cref="ReevooMarkData"/></returns>
         /// <exception cref="ReevooException">If anything bad happened whilst getting mark data</exception>
-		public virtual ReevooMarkData ObtainReevooMarkData (Parameters params_, String baseUri_)
-        {
+		public virtual ReevooMarkData ObtainReevooMarkData (Parameters params_, String baseUri_) {
             //this function delegates to 'ObtainReevooMarkDataInternal', which handles
             //the logic of actually getting and parsing the data from the ReevooMark service.
 
@@ -112,10 +109,11 @@ namespace ReevooMark
         /// <summary>
         /// Internal method which does the actual work of getting the Mark data.
         /// </summary>
-		private ReevooMarkData ObtainReevooMarkDataInternal (Parameters params_, String baseUri_)
-        {
+		private ReevooMarkData ObtainReevooMarkDataInternal (Parameters params_, String baseUri_) {
             var _builder = new UriBuilder (baseUri_);
 			_builder.Query = params_.ToQueryString();
+
+			//Console.WriteLine ("URL: " + _builder.Uri);
 
             HttpWebRequest _req = (HttpWebRequest)WebRequest.Create (_builder.ToString ());
 
@@ -164,8 +162,7 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'overall score' member from the returned data structure
         /// </summary>
-        internal static string GetOverallScore (WebHeaderCollection webHeaderCollection_)
-        {
+        internal static string GetOverallScore (WebHeaderCollection webHeaderCollection_) {
             String _overallScore = webHeaderCollection_ [HEADER_OVERALL_SCORE];
             if (String.IsNullOrEmpty (_overallScore)) {
                 return String.Empty;
@@ -177,8 +174,7 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'best price' member from the returned data structure
         /// </summary>
-        internal static String GetBestPrice (WebHeaderCollection webHeaderCollection_)
-        {
+        internal static String GetBestPrice (WebHeaderCollection webHeaderCollection_) {
             String _bestPrice = webHeaderCollection_ [HEADER_BEST_PRICE];
             if (string.IsNullOrEmpty (_bestPrice)) {
                 return string.Empty;
@@ -190,8 +186,7 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'score count' member from the returned data structure
         /// </summary>
-        internal static int GetScoreCount (WebHeaderCollection webHeaderCollection_)
-        {
+        internal static int GetScoreCount (WebHeaderCollection webHeaderCollection_) {
             int _scoreCount;
             if (int.TryParse (webHeaderCollection_ [HEADER_SCORE_COUNT], out _scoreCount)) {
                 return _scoreCount;
@@ -203,8 +198,7 @@ namespace ReevooMark
         /// <summary>
         /// Returns the 'review count' member from the returned data structure
         /// </summary>
-        internal static int GetReviewCount (WebHeaderCollection webHeaderCollection)
-        {
+        internal static int GetReviewCount (WebHeaderCollection webHeaderCollection) {
             int _reviewCount;
             if (int.TryParse (webHeaderCollection [HEADER_REVIEW_COUNT], out _reviewCount)) {
                 return _reviewCount;

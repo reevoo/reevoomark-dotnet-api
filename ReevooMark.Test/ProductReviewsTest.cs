@@ -17,7 +17,7 @@ namespace ReevooMark.Test
         public void setup()
         {
             // Very helpful for debugging
-            //RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
+            RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
 
             this.mock_client = MockRepository.GenerateMock<ReevooClient>();
             this.p_reviews = new ProductReviews();
@@ -36,7 +36,7 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
             mock_client.VerifyAllExpectations();
 
@@ -46,7 +46,8 @@ namespace ReevooMark.Test
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocale()
         {
             this.p_reviews.NumberOfReviews = "5";
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/5/embeddable_reviews")).Return(new ReevooMarkData());
+            Parameters expected = new Parameters("trkref", "FOO", "reviews", "5");
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
             mock_client.VerifyAllExpectations();
 
@@ -56,7 +57,8 @@ namespace ReevooMark.Test
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingNumberOfReviews()
         {
             this.p_reviews.Locale = "fr-FR";
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/fr-FR/embeddable_reviews")).Return(new ReevooMarkData());
+            Parameters expected = new Parameters("trkref", "FOO", "locale", "fr-FR");
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
             mock_client.VerifyAllExpectations();
 
@@ -67,7 +69,8 @@ namespace ReevooMark.Test
         {
             this.p_reviews.NumberOfReviews = "5";
             this.p_reviews.Locale = "fr-FR";
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), "http://mark.reevoo.com/reevoomark/fr-FR/5/embeddable_reviews")).Return(new ReevooMarkData());
+            Parameters expected = new Parameters("trkref", "FOO", "reviews", "5", "locale", "fr-FR");
+            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(this.p_reviews);
             mock_client.VerifyAllExpectations();
         }
