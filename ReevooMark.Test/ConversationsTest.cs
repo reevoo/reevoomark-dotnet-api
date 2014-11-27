@@ -8,7 +8,7 @@ namespace ReevooMark.Test
     [TestFixture()]
     public class ConversationsTest
     {
-        ReevooClient mock_client;
+        ReevooClient mockedClient;
         Conversations conversations;
 
         [SetUp]
@@ -17,10 +17,10 @@ namespace ReevooMark.Test
             // Very helpful for debugging
             RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
 
-            this.mock_client = MockRepository.GenerateMock<ReevooClient>();
-            this.conversations = new Conversations();
-            this.conversations.Trkref = "FOO";
-            this.conversations.client = mock_client;
+            mockedClient = MockRepository.GenerateMock<ReevooClient>();
+            conversations = new Conversations();
+            conversations.Trkref = "FOO";
+            conversations.client = mockedClient;
         }
 
         public void RenderBadge(AbstractReevooMarkClientTag tag)
@@ -33,13 +33,11 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
-            RenderBadge(this.conversations);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
+            RenderBadge(conversations);
+            mockedClient.VerifyAllExpectations();
 
         }
-
-
     }
 }
 

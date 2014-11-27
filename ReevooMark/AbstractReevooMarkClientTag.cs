@@ -28,7 +28,7 @@ namespace ReevooMark {
         public String GetContent () {
             String _content;
             try {
-				_content = client.ObtainReevooMarkData (BuildParams(), BuildUrl()).Content;
+				_content = client.ObtainReevooMarkData (BuildParams(), BaseUri).Content;
             } catch (ReevooException re_) {
                 //We wrap all exceptions with a ReevooException. Log the error & return the empty string.
                 Trace.Write (re_.Message);
@@ -37,7 +37,7 @@ namespace ReevooMark {
             return _content;
         }
 
-		public override Parameters BuildParams () {
+		protected override Parameters BuildParams () {
 			return new Parameters () {
 				{ "locale", Locale },
 				{ "reviews", IsPaginated() ? null : NumberOfReviews },
@@ -50,19 +50,14 @@ namespace ReevooMark {
 			};
 		}
 
-		public string SortBy() {
+		protected string SortBy() {
 			if (!IsPaginated())
 				return null;
 
-			string reevooSortBy = GetRequestParamValue("reevoo_sort_by");
-
-			if (reevooSortBy != null)
-				return reevooSortBy;
-
-			return "seo_boost";
+			return GetRequestParamValue("reevoo_sort_by");
 		}
 
-		public string CurrentPage() {
+		protected string CurrentPage() {
 			if (!IsPaginated())
 				return null;
 
@@ -74,22 +69,20 @@ namespace ReevooMark {
 			return "1";
 		}
 
-		public string Filter() {
+		protected string Filter() {
 			if (!IsPaginated())
 				return null;
 
 			return GetRequestParamValue("reevoo_filter");
 		}
 
-		public string GetRequestParamValue(string key) {
-			NameValueCollection paramCollection = HttpUtility.ParseQueryString (Request.Url.Query);
-			return paramCollection.Get (key);
+		protected string GetRequestParamValue(string key) {
+			return ParamCollection().Get(key);
 		}
 
-		public string BuildUrl ()
-        {
-            return BaseUri; 
-        }
+		public virtual NameValueCollection ParamCollection() {
+			return HttpUtility.ParseQueryString(Request.Url.Query);
+		}
 
 		public string Locale {
             get {  return _locale; }

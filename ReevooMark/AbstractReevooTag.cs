@@ -23,7 +23,7 @@ namespace ReevooMark {
 
 		}
 
-		public virtual Parameters BuildParams () {
+		protected virtual Parameters BuildParams () {
 			return new Parameters () {
 				{ "trkref", Trkref },
 				{ "sku", Sku },

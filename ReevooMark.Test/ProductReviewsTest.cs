@@ -2,7 +2,8 @@
 using System;
 using Rhino.Mocks;
 using System.Web.UI;
-using System.Collections.Generic;
+using System.Web;
+using System.Collections.Specialized;
 
 namespace ReevooMark.Test
 {
@@ -10,8 +11,8 @@ namespace ReevooMark.Test
     public class ProductReviewsTest
     {
 
-        ReevooClient mock_client;
-        ProductReviews p_reviews;
+        ReevooClient mockedClient;
+        ProductReviews productReviews;
 
         [SetUp]
         public void setup()
@@ -19,10 +20,10 @@ namespace ReevooMark.Test
             // Very helpful for debugging
             RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
 
-            this.mock_client = MockRepository.GenerateMock<ReevooClient>();
-            this.p_reviews = new ProductReviews();
-            this.p_reviews.Trkref = "FOO";
-            this.p_reviews.client = mock_client;
+            mockedClient = MockRepository.GenerateMock<ReevooClient>();
+            productReviews = MockRepository.GeneratePartialMock<ProductReviews>();
+            productReviews.Trkref = "FOO";
+            productReviews.client = mockedClient;
         }
 
         public void RenderBadge(AbstractReevooMarkClientTag tag)
@@ -36,44 +37,112 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
-            RenderBadge(this.p_reviews);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
 
         }
 
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocale()
         {
-            this.p_reviews.NumberOfReviews = "5";
+            productReviews.NumberOfReviews = "5";
+
             Parameters expected = new Parameters("trkref", "FOO", "reviews", "5");
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
-            RenderBadge(this.p_reviews);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
 
         }
 
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingNumberOfReviews()
         {
-            this.p_reviews.Locale = "fr-FR";
+            productReviews.Locale = "fr-FR";
+
             Parameters expected = new Parameters("trkref", "FOO", "locale", "fr-FR");
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
-            RenderBadge(this.p_reviews);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
 
         }
 
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpointWhenUsingLocaleAndNumberOfReviews()
         {
-            this.p_reviews.NumberOfReviews = "5";
-            this.p_reviews.Locale = "fr-FR";
+            productReviews.NumberOfReviews = "5";
+            productReviews.Locale = "fr-FR";
+
             Parameters expected = new Parameters("trkref", "FOO", "reviews", "5", "locale", "fr-FR");
-            this.mock_client.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
-            RenderBadge(this.p_reviews);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
         }
-            
+
+        [Test]
+        public void TestPaginatedProductReviews()
+        {
+            productReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection());
+            productReviews.Paginated = "true";
+            productReviews.Trkref = "REV";
+
+            Parameters expected = new Parameters("trkref", "REV", "per_page", "default", "page", "1");
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void TestPaginatedProductReviewsPage()
+        {
+            productReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection() { { "reevoo_page", "7" }, });
+            productReviews.Paginated = "true";
+            productReviews.Trkref = "AUU";
+
+            Parameters expected = new Parameters("trkref", "AUU", "per_page", "default", "page", "7");
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void TestPaginatedProductReviewsPerPage()
+        {
+            productReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection());
+            productReviews.Paginated = "true";
+            productReviews.Trkref = "POU";
+            productReviews.NumberOfReviews = "5";
+
+            Parameters expected = new Parameters("trkref", "POU", "per_page", "default", "page", "1", "per_page", "5");
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void TestPaginatedProductReviewsSortBy()
+        {
+            productReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection() { { "reevoo_sort_by", "lowest_score" }, });
+            productReviews.Paginated = "true";
+            productReviews.Trkref = "KYH";
+
+            Parameters expected = new Parameters("trkref", "KYH", "per_page", "default", "page", "1", "sort_by", "lowest_score");
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void TestPaginatedProductReviewsFilter()
+        {
+            productReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection() { { "reevoo_filter", "moms" }, });
+            productReviews.Paginated = "true";
+            productReviews.Trkref = "XES";
+
+            Parameters expected = new Parameters("trkref", "XES", "per_page", "default", "page", "1", "filter", "moms");
+            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
+            RenderBadge(productReviews);
+            mockedClient.VerifyAllExpectations();
+        }
     }
 }
