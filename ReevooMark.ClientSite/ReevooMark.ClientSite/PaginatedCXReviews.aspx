@@ -10,10 +10,9 @@
     <body>
         <form id="Form1" runat="server">
             <div class="page">
-                <div class="main">
-                    <h2><a href="/ClassicReviews.aspx">Class Reviews</a></h2>
-                    <h2><a href="/PaginatedProductReviews.aspx">Paginated Product Reviews</a></h2>
-                    <h2><a href="/PaginatedCXReviews.aspx">Paginated Customer Experience Reviews</a></h2>
+                <div class="main"> 
+                    <reevoo:CustomerExperienceReviews trkref="CYS" numberOfReviews="3" paginated="true" runat="server"/> 
+                 	<reevoo:JavascriptAssets trkref="CYS,REV,EBU,PIU,HYU,TSC" runat="server"/>
                 </div>
             </div>
          </form>
