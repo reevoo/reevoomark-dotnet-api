@@ -85,19 +85,6 @@ namespace ReevooMark.Test
         }
 
         [Test]
-        public void TestPaginatedCXReviews()
-        {
-            cxReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection());
-            cxReviews.Paginated = "true";
-            cxReviews.Trkref = "REV";
-
-            Parameters expected = new Parameters("trkref", "REV", "per_page", "default", "page", "1");
-            mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_customer_experience_reviews")).Return(new ReevooMarkData());
-            RenderBadge(cxReviews);
-            mockedClient.VerifyAllExpectations();
-        }
-
-        [Test]
         public void TestPaginatedCXReviewsPage()
         {
             cxReviews.Stub(x => x.ParamCollection()).Return(new NameValueCollection() { { "reevoo_page", "7" }, });
@@ -118,7 +105,7 @@ namespace ReevooMark.Test
             cxReviews.Trkref = "POU";
             cxReviews.NumberOfReviews = "5";
 
-            Parameters expected = new Parameters("trkref", "POU", "per_page", "default", "page", "1", "per_page", "5");
+            Parameters expected = new Parameters("trkref", "POU", "page", "1", "per_page", "5");
             mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_customer_experience_reviews")).Return(new ReevooMarkData());
             RenderBadge(cxReviews);
             mockedClient.VerifyAllExpectations();

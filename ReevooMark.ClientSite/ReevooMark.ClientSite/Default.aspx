@@ -11,7 +11,7 @@
         <form id="Form1" runat="server">
             <div class="page">
                 <div class="main">
-                    <h2><a href="/ClassicReviews.aspx">Class Reviews</a></h2>
+                    <h2><a href="/ClassicReviews.aspx">Classic Reviews</a></h2>
                     <h2><a href="/PaginatedProductReviews.aspx">Paginated Product Reviews</a></h2>
                     <h2><a href="/PaginatedCXReviews.aspx">Paginated Customer Experience Reviews</a></h2>
                 </div>

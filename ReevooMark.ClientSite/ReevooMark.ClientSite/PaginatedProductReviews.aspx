@@ -11,7 +11,7 @@
         <form id="Form1" runat="server">
             <div class="page">
                 <div class="main"> 
-                	<reevoo:ProductReviews sku="167823" trkref="REV" paginated="true" runat="server"/>
+                	<reevoo:ProductReviews sku="167823" trkref="REV" numberOfReviews="5" paginated="true" runat="server"/>
                  	<reevoo:JavascriptAssets trkref="CYS,REV,EBU,PIU,HYU,TSC" runat="server"/>
                 </div>
             </div>

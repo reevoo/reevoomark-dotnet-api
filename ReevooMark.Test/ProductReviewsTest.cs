@@ -114,7 +114,7 @@ namespace ReevooMark.Test
             productReviews.Trkref = "POU";
             productReviews.NumberOfReviews = "5";
 
-            Parameters expected = new Parameters("trkref", "POU", "per_page", "default", "page", "1", "per_page", "5");
+            Parameters expected = new Parameters("trkref", "POU", "page", "1", "per_page", "5");
             mockedClient.Expect(x => x.ObtainReevooMarkData(expected, Config.BaseUri() + "reevoomark/embeddable_reviews")).Return(new ReevooMarkData());
             RenderBadge(productReviews);
             mockedClient.VerifyAllExpectations();
