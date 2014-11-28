@@ -25,6 +25,6 @@ namespace ReevooMark
 
         public String OverallScore { get; internal set; }
 
-		public Parameters Params { get; internal set; }
+        public Parameters Params { get; internal set; }
     }
 }

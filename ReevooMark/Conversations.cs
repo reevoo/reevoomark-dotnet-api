@@ -6,7 +6,7 @@ namespace ReevooMark
     {
         public Conversations ()
         {
-			this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_conversations";
+            this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_conversations";
         }
 
         protected override void OnInit (EventArgs e)

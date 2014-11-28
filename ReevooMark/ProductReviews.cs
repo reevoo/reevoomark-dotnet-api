@@ -5,7 +5,7 @@ namespace ReevooMark {
 
     public class ProductReviews :AbstractReevooMarkClientTag  {
         public ProductReviews () {
-			this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_reviews";
+            this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_reviews";
         }
 
         protected override void OnInit (EventArgs e) {

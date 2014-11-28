@@ -7,7 +7,7 @@ namespace ReevooMark {
     /// </summary>
     public class CustomerExperienceReviews :AbstractReevooMarkClientTag {
         public CustomerExperienceReviews () {
-			this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_customer_experience_reviews";
-		}
+            this.BaseUri = Config.BaseUri() + "reevoomark/embeddable_customer_experience_reviews";
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace ReevooMark {
     public abstract class AbstractReevooMarkClientTag:AbstractReevooTag {
         protected String _locale = "";
         protected String _numberOfReviews = "";
-		protected String _paginated = "";
+        protected String _paginated = "";
         public ReevooClient client = new ReevooClient ();
 
         protected override void OnInit (EventArgs e) {
@@ -28,7 +28,7 @@ namespace ReevooMark {
         public String GetContent () {
             String _content;
             try {
-				_content = client.ObtainReevooMarkData (BuildParams(), BaseUri).Content;
+                _content = client.ObtainReevooMarkData (BuildParams(), BaseUri).Content;
             } catch (ReevooException re_) {
                 //We wrap all exceptions with a ReevooException. Log the error & return the empty string.
                 Trace.Write (re_.Message);
@@ -37,75 +37,75 @@ namespace ReevooMark {
             return _content;
         }
 
-		protected override Parameters BuildParams () {
-			return new Parameters () {
-				{ "locale", Locale },
-				{ "reviews", IsPaginated() ? null : NumberOfReviews }, // we are using 'reviews' when not paginated
-				{ "trkref", Trkref },
-				{ "sku", Sku },
-				{ "per_page", IsPaginated() ? NumberOfReviews : null }, // we are using 'per_page' when paginated
-				{ "page", GetReevooParam("page", "1") },
-				{ "sort_by", GetReevooParam("sort_by") },
-				{ "filter", GetReevooParam("filter") },
-				{ "client_url", ClientUrl() },
-			};
-		}
-		protected string GetReevooParam(string paramName) {
-			return GetReevooParam (paramName, null);
-		}
+        protected override Parameters BuildParams () {
+            return new Parameters () {
+                { "locale", Locale },
+                { "reviews", IsPaginated() ? null : NumberOfReviews }, // we are using 'reviews' when not paginated
+                { "trkref", Trkref },
+                { "sku", Sku },
+                { "per_page", IsPaginated() ? NumberOfReviews : null }, // we are using 'per_page' when paginated
+                { "page", GetReevooParam("page", "1") },
+                { "sort_by", GetReevooParam("sort_by") },
+                { "filter", GetReevooParam("filter") },
+                { "client_url", ClientUrl() },
+            };
+        }
+        protected string GetReevooParam(string paramName) {
+            return GetReevooParam (paramName, null);
+        }
 
-		protected string GetReevooParam(string paramName, string defaultValue) {
-			if (!IsPaginated())
-				return null;
+        protected string GetReevooParam(string paramName, string defaultValue) {
+            if (!IsPaginated())
+                return null;
 
-			string paramValue = GetRequestParamValue("reevoo_" + paramName);
+            string paramValue = GetRequestParamValue("reevoo_" + paramName);
 
-			if (paramValue != null)
-				return paramValue;
+            if (paramValue != null)
+                return paramValue;
 
-			return defaultValue;
-		}
+            return defaultValue;
+        }
 
-		protected string GetRequestParamValue(string key) {
-			return ParamCollection().Get(key);
-		}
+        protected string GetRequestParamValue(string key) {
+            return ParamCollection().Get(key);
+        }
 
-		public virtual NameValueCollection ParamCollection() {
-			return HttpUtility.ParseQueryString(Request.Url.Query);
-		}
+        public virtual NameValueCollection ParamCollection() {
+            return HttpUtility.ParseQueryString(Request.Url.Query);
+        }
 
-		public virtual string ClientUrl() {
-			if (!IsPaginated())
-				return null;
+        public virtual string ClientUrl() {
+            if (!IsPaginated())
+                return null;
 
-			return Uri.EscapeDataString(Request.Url.ToString());
-		}
+            return Uri.EscapeDataString(Request.Url.ToString());
+        }
 
-		public string Locale {
+        public string Locale {
             get {  return _locale; }
             set { _locale = value; }
         }
 
-		public string NumberOfReviews {
-			get {
-				if (!IsPaginated ())
-					return _numberOfReviews;
+        public string NumberOfReviews {
+            get {
+                if (!IsPaginated ())
+                    return _numberOfReviews;
 
-				if (_numberOfReviews == null || _numberOfReviews == "")
-					return "default";
+                if (_numberOfReviews == null || _numberOfReviews == "")
+                    return "default";
 
-				return _numberOfReviews;
-			}
+                return _numberOfReviews;
+            }
             set { _numberOfReviews = value; }
         }
 
-		public string Paginated {
-			get { return _paginated; }
-			set { _paginated = value; }
-		}
+        public string Paginated {
+            get { return _paginated; }
+            set { _paginated = value; }
+        }
 
-		public bool IsPaginated() {
-			return Paginated == "true" || Paginated == "yes";
-		}
+        public bool IsPaginated() {
+            return Paginated == "true" || Paginated == "yes";
+        }
     }
 }

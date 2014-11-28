@@ -21,14 +21,14 @@ namespace ReevooMark {
                 this.Trkref = WebConfigurationManager.AppSettings ["Trkref"]; 
             }
 
-		}
+        }
 
-		protected virtual Parameters BuildParams () {
-			return new Parameters () {
-				{ "trkref", Trkref },
-				{ "sku", Sku },
-			};
-		}
+        protected virtual Parameters BuildParams () {
+            return new Parameters () {
+                { "trkref", Trkref },
+                { "sku", Sku },
+            };
+        }
 
         public String Sku { get; set; }
 
