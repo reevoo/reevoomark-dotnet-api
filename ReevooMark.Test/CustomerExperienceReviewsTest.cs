@@ -20,6 +20,7 @@ namespace ReevooMark.Test
         {
             mockedClient = MockRepository.GenerateMock<ReevooClient>();
             cxReviews = MockRepository.GeneratePartialMock<CustomerExperienceReviews>();
+            cxReviews.Stub(x => x.ClientUrl()).Return(null);
             cxReviews.Trkref = "FOO";
             cxReviews.client = mockedClient;
         }

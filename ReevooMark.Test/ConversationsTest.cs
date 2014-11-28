@@ -18,7 +18,8 @@ namespace ReevooMark.Test
             RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
 
             mockedClient = MockRepository.GenerateMock<ReevooClient>();
-            conversations = new Conversations();
+            conversations = MockRepository.GeneratePartialMock<Conversations>();
+            conversations.Stub(x => x.ClientUrl()).Return(null);
             conversations.Trkref = "FOO";
             conversations.client = mockedClient;
         }

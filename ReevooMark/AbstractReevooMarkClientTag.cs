@@ -47,6 +47,7 @@ namespace ReevooMark {
 				{ "page", GetReevooParam("page", "1") },
 				{ "sort_by", GetReevooParam("sort_by") },
 				{ "filter", GetReevooParam("filter") },
+				{ "client_url", ClientUrl() },
 			};
 		}
 		protected string GetReevooParam(string paramName) {
@@ -71,6 +72,13 @@ namespace ReevooMark {
 
 		public virtual NameValueCollection ParamCollection() {
 			return HttpUtility.ParseQueryString(Request.Url.Query);
+		}
+
+		public virtual string ClientUrl() {
+			if (!IsPaginated())
+				return null;
+
+			return Uri.EscapeDataString(Request.Url.ToString());
 		}
 
 		public string Locale {
