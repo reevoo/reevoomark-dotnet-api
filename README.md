@@ -198,6 +198,7 @@ Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` 
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" runat="server"/>
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" runat="server"/>
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" numberOfReviews="<NUMBEROFREVIEWS>" paginated="true" runat="server"/>
 ```
 
 #### Overall rating
@@ -248,6 +249,7 @@ Make sure to replace `<TRKREF>` and `<NUMBEROFREVIEWS>` with the appropriate val
   <reevoo:CustomerExperienceReviews trkref="<TRKREF>" runat="server"/>
   <reevoo:CustomerExperienceReviews numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
   <reevoo:CustomerExperienceReviews trkref="<TRKREF>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:CustomerExperienceReviews trkref="<TRKREF>" numberOfReviews="<NUMBEROFREVIEWS>" paginated="true" runat="server"/>
 ```
 
 #### Fallback
