@@ -29,7 +29,7 @@ namespace ReevooMark
             String _content;
             try
             {
-                _content = new ReevooClient().ObtainReevooMarkData(Trkref, Sku, BaseUri).Content;
+                _content = new ReevooClient().ObtainReevooMarkData(BuildParams(), BaseUri).Content;
             }
             catch (ReevooException re_)
             {

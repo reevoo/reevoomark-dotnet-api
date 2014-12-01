@@ -10,7 +10,7 @@ namespace ReevooMark
         {
             try {
                 string relValue = "stylesheet";
-                string urlValue = "//mark.reevoo.com/stylesheets/reevoomark/embedded_reviews.css";
+                string urlValue = Config.BaseUriAssets() + "stylesheets/reevoomark/embedded_reviews.css";
                 string typeValue = "text/css";
 
                 writer.AddAttribute (HtmlTextWriterAttribute.Rel, relValue);

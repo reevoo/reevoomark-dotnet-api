@@ -198,6 +198,7 @@ Make sure to replace `<SKU>` and `<TRKREF>`, `<LOCALE>` and `<NUMBEROFREVIEWS>` 
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" runat="server"/>
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" runat="server"/>
   <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:ProductReviews sku="<SKU>" trkref="<TRKREF>" locale="<LOCALE>" numberOfReviews="<NUMBEROFREVIEWS>" paginated="true" runat="server"/>
 ```
 
 #### Overall rating
@@ -248,6 +249,7 @@ Make sure to replace `<TRKREF>` and `<NUMBEROFREVIEWS>` with the appropriate val
   <reevoo:CustomerExperienceReviews trkref="<TRKREF>" runat="server"/>
   <reevoo:CustomerExperienceReviews numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
   <reevoo:CustomerExperienceReviews trkref="<TRKREF>" numberOfReviews="<NUMBEROFREVIEWS>" runat="server"/>
+  <reevoo:CustomerExperienceReviews trkref="<TRKREF>" numberOfReviews="<NUMBEROFREVIEWS>" paginated="true" runat="server"/>
 ```
 
 #### Fallback
@@ -290,11 +292,57 @@ ReevooMark.auto_scale()
 
 ## Tracking
 
-If you display the reviews in a tabbed display, or otherwise require visitors to your site to click an element before seeing the embedded reviews, add the following onclick attribute to track the clickthroughs:
+If you display the reviews in a tabbed display, or otherwise require visitors to your site to click an element before
+seeing the embedded reviews, add the following onclick attribute to track the clickthroughs:
+
+If your trkref value is for example "REV" you would add:
+
+```HTML
+  onclick="ReevooMark_REV.track_click_through(‘<SKU>’)”
+```
+
+If your trkref value is for example "PIU" you would add:
+
+```HTML
+  onclick="ReevooMark_PIU.track_click_through(‘<SKU>’)”
+```
+
+See how in examples above you need to put your trkref value as a suffix to the ReevooMark_ bit. Also remember to replace <SKU> by the sku of the product to which the reviews belong.
+
+### Purchase Tracking
+
+If your site includes online shopping functionality add Reevoo's purchase tracking to your store by including the following tag in your "Order Confirmation Page":
 
 ``` html
-  onclick="ReevooMark.track_click_through(‘<SKU>’)”
+<reevoo:PurchaseTrackingEvent trkref="REV" skus="999,222,3373" value="342.00" runat="server"/>
 ```
+
+In the tag above:
+* Make sure to replace the value of the "trkref" attribute with your own trkref.
+* Replace the value of the "skus" attribute with a comma separated list of all the skus that have been purchased as part of the order.
+* Replace the value of the "value" attribute with the total value of the order, you don't need to include currency symbol.
+
+All this tracking information will be available to you on your Reevoo Analytics account.
+
+### Propensity to Buy Tracking
+
+This type of tracking is used as a substitute of purchase tracking, detailed in the section above, for retailers that do not offer online purchase in their stores and therefore do not have an order confirmation page.
+
+These retailers can use <reevoo:propensityToBuyTrackingEvent>, which can be added to any page they wish on the site.
+
+To add a propensity to buy event to a page use the following tag:
+
+``` html
+<reevoo:PropensityToBuyTrackingEvent trkref="REV" action="Requested Brochure" sku="234" runat="server"/>
+```
+
+In the tag above:
+* Make sure to replace the value of the "trkref" attribute with your own trkref.
+* Replace the value of the "action" attribute with a string desccribing the type of event that you want to track, can be anything you want like "user visited the buy now page" or "user requested brochure" or "user requested a test drive", etc...
+* The "sku" attribute is optional, you only have to include it if you want to link the tracking event to a specific product sku, otherwise just leave it empty.
+
+All this tracking information will be available to you on your Google Analitycs account.
+
 ##Requirements
 
 .NET v2.0+

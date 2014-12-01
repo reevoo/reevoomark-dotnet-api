@@ -8,16 +8,20 @@ namespace ReevooMark.Test
     [TestFixture()]
     public class ConversationsTest
     {
-        ReevooClient mock_client;
+        ReevooClient mockedClient;
         Conversations conversations;
 
         [SetUp]
         public void setup()
         {
-            this.mock_client = MockRepository.GenerateMock<ReevooClient>();
-            this.conversations = new Conversations();
-            this.conversations.Trkref = "FOO";
-            this.conversations.client = mock_client;
+            // Very helpful for debugging
+            RhinoMocks.Logger = new Rhino.Mocks.Impl.TextWriterExpectationLogger(Console.Out);
+
+            mockedClient = MockRepository.GenerateMock<ReevooClient>();
+            conversations = MockRepository.GeneratePartialMock<Conversations>();
+            conversations.Stub(x => x.ClientUrl()).Return(null);
+            conversations.Trkref = "FOO";
+            conversations.client = mockedClient;
         }
 
         public void RenderBadge(AbstractReevooMarkClientTag tag)
@@ -30,13 +34,11 @@ namespace ReevooMark.Test
         [Test]
         public void TestTagCallsClientWithCorrectAttributesAndTheCXEndpoint()
         {
-            this.mock_client.Expect(x => x.ObtainReevooMarkData("FOO", null, "http://mark.reevoo.com/reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
-            RenderBadge(this.conversations);
-            mock_client.VerifyAllExpectations();
+            mockedClient.Expect(x => x.ObtainReevooMarkData(new Parameters("trkref", "FOO"), Config.BaseUri() + "reevoomark/embeddable_conversations")).Return(new ReevooMarkData());
+            RenderBadge(conversations);
+            mockedClient.VerifyAllExpectations();
 
         }
-
-
     }
 }
 

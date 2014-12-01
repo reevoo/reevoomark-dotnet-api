@@ -62,15 +62,6 @@ namespace ReevooMark.Test
         }
 
         [Test]
-        public void TestGetQueryString()
-        {
-            string _sku = @"foo";
-            string _trkref = @"bar";
-
-            StringAssert.IsMatch("sku=foo&trkref=bar", ReevooClient.GetQueryString(_trkref, _sku));
-        }
-
-        [Test]
         public void TestGetOverallScore()
         {
             Assert.AreEqual("9.4", ReevooClient.GetOverallScore(_goodHeaders), "GetOverallScore parsing logic failed");
