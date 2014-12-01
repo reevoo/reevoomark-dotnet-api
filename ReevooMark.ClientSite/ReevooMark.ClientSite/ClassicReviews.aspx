@@ -11,20 +11,10 @@
         <form id="Form1" runat="server">
             <div class="page">
                 <div class="main">
-                    <h2>Product Reviews without trkref</h2>
-                	<reevoo:ProductReviews sku="167823" runat="server">FALLBACK TEXT</reevoo:ProductReviews>
-                	<h2>Product Reviews</h2>
-                	<reevoo:ProductReviews sku="167823" trkref="REV" runat="server"/>
-                    <h2>Customer Experience Reviews</h2>
-                    <reevoo:CustomerExperienceReviews trkref="CYS" numberOfReviews="3" runat="server"/> 
-                    <h2>Conversations</h2>
-                    <reevoo:Conversations trkref="REV" sku="167823" runat="server"/>
-                    <h2>Product Badge Undecorated</h2>
-                    <reevoo:ProductBadge sku="67255143" trkref="TSC" variantName = "undecorated" runat="server">Read reviews</reevoo:ProductBadge>
                     <h2>Product Badge Variant</h2>
                     <reevoo:productBadge trkref="EBU" sku="582929" variantName="search_page_variant" runat="server"/>
                     <h2>Product Badge</h2>
-                    <reevoo:ProductBadge sku="67255143" trkref="TSC" runat="server" />
+                    <reevoo:ProductBadge sku="582929" trkref="EBU" runat="server" />
                     <h2>Overall Service Rating Badge</h2>
                     <reevoo:OverallServiceRatingBadge trkref="CYS" runat="server" />
                     <h2>Delivery Rating Badge</h2>
@@ -40,7 +30,12 @@
                     <h2>Product Reviews with locale</h2>
                 	<reevoo:ProductReviews sku="167823" trkref="REV" locale="fr-FR" numberOfReviews="5" runat="server"/>
  					<reevoo:Mark sku="167823" BaseUri ="http://mark.reevoo.com/reevoomark/en-GB/embeddable_reviews" runat="server"> Hello </reevoo:Mark>
-                    <reevoo:JavascriptAssets trkref="CYS,REV,EBU,PIU,HYU,TSC" runat="server"/>
+					<h2> Purchase Tracking </h2>
+                    <reevoo:PurchaseTrackingEvent trkref="EBU" skus="999,222,888" value="342.00" runat="server"/>
+                    <h2> Propensity to Buy Tracking </h2>
+                    <reevoo:PropensityToBuyTrackingEvent trkref="EBU" action="Requested_Brochure" sku="123" runat="server"/>
+
+                    <reevoo:JavascriptAssets trkref="CYS,REV,EBU,PIU,HYU" runat="server"/>
                 </div>
             </div>
          </form>
