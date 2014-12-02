@@ -58,6 +58,8 @@
       <DependentUpon>ConversationsTest.cs</DependentUpon>
     </Compile>
     <Compile Include="ParametersTest.cs" />
+    <Compile Include="PropensityToBuyTrackingEventTest.cs" />
+    <Compile Include="PurchaseTrackingEventTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReevooMark\ReevooMark.csproj">
