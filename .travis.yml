@@ -1,16 +1,19 @@
-language: objective-c
+language: csharp
+solution: ReevooMark.sln
 
-env:
-  global:
-    - EnableNuGetPackageRestore=true
-  matrix:
-    - MONO_VER="2.10.11"
+mono:
+  - latest
+  - 3.12.0
+  - 3.10.0
+  - 3.8.0
+  - 3.2.8
+  - 2.10.8
 
-before_install:
-  - wget "http://download.mono-project.com/archive/${MONO_VER}/macos-10-x86/MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.dmg"
-  - hdid "MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.dmg"
-  - sudo installer -pkg "/Volumes/Mono Framework MDK ${MONO_VER}/MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.pkg" -target /
  
+install:
+  - nuget restore ReevooMark.sln
+  - nuget install NUnit.Runners -Version 2.5.10 -OutputDirectory testrunner
+
 script:
   - xbuild ./ReevooMark.Test/ReevooMark.Test.csproj
-  - nunit-console ./ReevooMark.Test/bin/Debug/ReevooMark.Test.dll
+  - mono ./testrunner/NUnit.Runners.2.5.10/tools/nunit-console.exe ./ReevooMark.Test/bin/Debug/ReevooMark.Test.dll
