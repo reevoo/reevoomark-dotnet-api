@@ -1,24 +1,24 @@
-﻿#reevoomark-dotnet-api
+﻿# reevoomark-dotnet-api
 
-##Description
+## Description
 
 The reevoomark-dotnet-api is a .NET tag library for ReevooMark and Reevoo Essentials customers who want to quickly and easily integrate Reevoo content in to their sites server-side.
 
-##Other Languages
+## Other Languages
 Tag libraries are also available for [Java](https://github.com/reevoo/reevoomark-java-api) and [PHP](https://github.com/reevoo/reevoomark-php-api).
 
-##Features
+## Features
 
 * Server-side inclusion of Reevoo content.
 * Included CSS for display of Reevoo content.
 * Server-side caching of content that respects the cache control rules set by Reevoo.
 
-##Support
+## Support
 For ReevooMark and Reevoo Essentials customers, support can be obtained by emailing <operations@reevoo.com>.
 
 There is also a [bug tracker](http://github.com/reevoo/reevoomark-dotnet-api/issues) available.
 
-##Installation
+## Installation
 
 Install [NuGet](http://nuget.org/) if you don't already have it, then run the following command in the package manager console:
 
@@ -26,7 +26,7 @@ Install [NuGet](http://nuget.org/) if you don't already have it, then run the fo
 Install-Package ReevooMark
 ```
 
-##Configuration
+## Configuration
 In your ```web.config``` file add the value of the TRKREF provided to you by Reevoo in the following way:
 
 ```net
@@ -47,7 +47,7 @@ will initialize our Reevoo javascript assets with the default TRKREF provided in
 <reevoo:JavascriptAssets  trkref="REV" runat="server"/>
 ```
 
-##Implementation
+## Implementation
 
 Register the namespace prefix:
 
@@ -343,11 +343,11 @@ In the tag above:
 
 All this tracking information will be available to you on your Google Analitycs account.
 
-##Requirements
+## Requirements
 
 .NET v2.0+
 
-##License
+## License
 
 This software is released under the MIT license.  Only certified ReevooMark partners
 are licensed to display Reevoo content on their sites.  Contact <sales@reevoo.com> for
