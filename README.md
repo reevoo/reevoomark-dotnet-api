@@ -71,13 +71,13 @@ As before you may set an explicit TRKREF if you wish.
 
 
 ```net
-<reevvoo:JavascriptAssets  trkref="REV" runat="server"/>
+<reevoo:JavascriptAssets  trkref="REV" runat="server"/>
 ```
 It also has support for multiple TRKREF'S.
 
 
 ```net
-<reevvoo:JavascriptAssets  trkref="REV, CYS, HYU" runat="server"/>
+<reevoo:JavascriptAssets  trkref="REV, CYS, HYU" runat="server"/>
 ```
 
 
